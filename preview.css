@@ -1,0 +1,99 @@
+/* General layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .container2 {
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    margin-top: 25px;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  h4 {
+    color: #555;
+    margin-top: 5px;
+    font-weight: normal;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin: 8px 0;
+  }
+  
+  strong {
+    color: #000;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Profile Image */
+  img {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Button */
+  button {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 10px 30px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 600px) {
+    .container2 {
+      padding: 15px;
+    }
+  
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  

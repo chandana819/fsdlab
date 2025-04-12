@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Your Resume</title>
+  <link rel="stylesheet" href="builder.css" />
+</head>
+<body>
+  <div class="container1">
+    <h2>Resume Builder</h2>
+    <form id="resumeForm">
+      <div class="section">
+        <h3>About Section</h3>
+        <div class="grid-3">
+          <input type="text" id="firstName" placeholder="First Name" required />
+          <input type="text" id="middleName" placeholder="Middle Name (optional)" />
+          <input type="text" id="lastName" placeholder="Last Name" required />
+          <input type="file" id="profileImage" accept="image/*" />
+          <input type="text" id="designation" placeholder="Designation" required />
+          <input type="text" id="address" placeholder="Address" />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="text" id="phone" placeholder="Phone Number" required />
+          <textarea id="summary" placeholder="Summary/About You"></textarea>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Achievements</h3>
+        <div class="grid-2">
+          <input type="text" id="achievementTitle" placeholder="Title" />
+          <input type="text" id="achievementDesc" placeholder="Description" />
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Education</h3>
+        <div class="grid-3">
+          <input type="text" id="school" placeholder="School" />
+          <input type="text" id="degree" placeholder="Degree" />
+          <input type="text" id="city" placeholder="City" />
+          <input type="date" id="startDate" />
+          <input type="date" id="endDate" />
+          <input type="text" id="eduDesc" placeholder="Description" />
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Projects</h3>
+        <div class="grid-2">
+          <input type="text" id="projectName" placeholder="Project Name" />
+          <input type="text" id="projectLink" placeholder="Project Link" />
+          <input type="text" id="projectDesc" placeholder="Description" />
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Skills</h3>
+        <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+      </div>
+
+      <button type="submit" class="btn2">Preview Resume</button>
+    </form>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById("profileImage");
+    let imageBase64 = "";
+
+    imageInput.addEventListener("change", function () {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        imageBase64 = e.target.result;
+      };
+      if (this.files[0]) {
+        reader.readAsDataURL(this.files[0]);
+      }
+    });
+
+    document.getElementById("resumeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = {
+        firstName: document.getElementById("firstName").value,
+        middleName: document.getElementById("middleName").value,
+        lastName: document.getElementById("lastName").value,
+        designation: document.getElementById("designation").value,
+        address: document.getElementById("address").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        summary: document.getElementById("summary").value,
+        achievementTitle: document.getElementById("achievementTitle").value,
+        achievementDesc: document.getElementById("achievementDesc").value,
+        school: document.getElementById("school").value,
+        degree: document.getElementById("degree").value,
+        city: document.getElementById("city").value,
+        startDate: document.getElementById("startDate").value,
+        endDate: document.getElementById("endDate").value,
+        eduDesc: document.getElementById("eduDesc").value,
+        projectName: document.getElementById("projectName").value,
+        projectLink: document.getElementById("projectLink").value,
+        projectDesc: document.getElementById("projectDesc").value,
+        skills: document.getElementById("skills").value,
+        image: imageBase64
+      };
+      localStorage.setItem("resumeData", JSON.stringify(data));
+      window.location.href = "template.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select a Template</title>
+  <link rel="stylesheet" href="builder.css" />
+  <style>
+    .template-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .template-card {
+      border: 2px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .template-card:hover {
+      border-color: #007bff;
+      box-shadow: 0 0 8px #aaa;
+    }
+
+    .selected {
+      border-color: #007bff;
+      background: #e6f0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container1">
+    <h2>Select a Resume Template</h2>
+    <div class="template-grid">
+      <div class="template-card" data-template="template1">
+        <h3>Template 1</h3>
+        <p>Simple and Clean</p>
+      </div>
+      <div class="template-card" data-template="template2">
+        <h3>Template 2</h3>
+        <p>Bold and Modern</p>
+      </div>
+    </div>
+    <button id="continueBtn" style="margin-top: 20px;">Continue to Preview</button>
+  </div>
+
+  <script>
+    let selectedTemplate = null;
+    const cards = document.querySelectorAll(".template-card");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        cards.forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        selectedTemplate = card.getAttribute("data-template");
+      });
+    });
+
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      if (!selectedTemplate) {
+        alert("Please select a template.");
+        return;
+      }
+      localStorage.setItem("selectedTemplate", selectedTemplate);
+      window.location.href = "preview.html";
+    });
+  </script>
+</body>
+</html>
