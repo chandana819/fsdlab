@@ -7,10 +7,46 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <a href="#">MyLogo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li>
+        <a href="#" class="signup-btn">Signup</a>
+
+      </li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  
+
+  <!-- HERO SECTION -->
   <div class="container">
     <h1>Digital Resume Builder</h1>
     <p>Create your professional resume in minutes.</p>
     <a href="builder.html" class="btn2">Start Building</a>
   </div>
+
+  <!-- MOBILE MENU TOGGLE SCRIPT -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
 </body>
 </html>
