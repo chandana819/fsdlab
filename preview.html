@@ -14,58 +14,831 @@
   </div>
 
   <script>
+    // Retrieve resume data and selected template from localStorage
     const data = JSON.parse(localStorage.getItem("resumeData"));
     const selectedTemplate = localStorage.getItem("selectedTemplate");
 
+    // Template 1 - Simple and Clean
     function renderTemplate1(data) {
-      return `
-        <img src="${data.image}" alt="Profile Image" style="width:120px;height:120px;border-radius:50%;" />
-        <h2>${data.firstName} ${data.middleName} ${data.lastName}</h2>
+  // Convert comma-separated skills into an unordered list of bullet items
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+
+  return `
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .resume {
+        max-width: 800px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+      .header h2 {
+        font-size: 28px;
+        margin: 10px 0;
+      }
+      .header h4 {
+        font-size: 20px;
+        color: #666;
+        margin: 5px 0;
+      }
+      .header p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+      .section-title {
+        font-size: 22px;
+        margin: 20px 0 10px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        text-align: center;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      .education-grid > div {
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .skills ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+      }
+      a {
+        color: #1e90ff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #eee;
+        margin: 20px 0;
+      }
+      @media (max-width: 600px) {
+        .education-grid {
+          grid-template-columns: 1fr;
+        }
+        .header h2 {
+          font-size: 24px;
+        }
+        .header h4 {
+          font-size: 18px;
+        }
+      }
+    </style>
+
+    <div class="resume">
+      <!-- About Section -->
+      <div class="header">
+        <img src="${data.profileImage}" alt="Profile Image" />
+        <h2>${data.firstName} ${data.middleName ? data.middleName + ' ' : ''}${data.lastName}</h2>
         <h4>${data.designation}</h4>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Phone:</strong> ${data.phone}</p>
         <p><strong>Address:</strong> ${data.address}</p>
-        <p><strong>Summary:</strong> ${data.summary}</p>
-        <h3>Achievements</h3>
-        <p>${data.achievementTitle}: ${data.achievementDesc}</p>
-        <h3>Education</h3>
-        <p>${data.school}, ${data.city} - ${data.degree} (${data.startDate} to ${data.endDate})</p>
-        <p>${data.eduDesc}</p>
-        <h3>Projects</h3>
-        <p><strong>${data.projectName}</strong> (<a href="${data.projectLink}" target="_blank">Link</a>)</p>
-        <p>${data.projectDesc}</p>
-        <h3>Skills</h3>
-        <p>${data.skills}</p>
-      `;
-    }
+        <p><strong>About Me:</strong> ${data.summary}</p>
+      </div>
+      <hr/>
 
-    function renderTemplate2(data) {
-      return `
-        <div style="background: #f9f9f9; padding: 1rem; border-left: 4px solid #007bff;">
-          <img src="${data.image}" alt="Profile Image" style="width:100px;height:100px;border-radius:50%;float:right;" />
-          <h2 style="color: #007bff;">${data.firstName} ${data.middleName} ${data.lastName}</h2>
-          <p><em>${data.designation}</em></p>
-          <p>${data.summary}</p>
-          <hr/>
-          <p><strong>Contact:</strong> ${data.email} | ${data.phone}</p>
-          <p><strong>Address:</strong> ${data.address}</p>
-          <h3>Achievements</h3>
-          <p>${data.achievementTitle}: ${data.achievementDesc}</p>
-          <h3>Education</h3>
-          <p>${data.school}, ${data.city} - ${data.degree} (${data.startDate} to ${data.endDate})</p>
-          <p>${data.eduDesc}</p>
-          <h3>Projects</h3>
-          <p><strong>${data.projectName}</strong> (<a href="${data.projectLink}" target="_blank">Link</a>)</p>
-          <p>${data.projectDesc}</p>
-          <h3>Skills</h3>
-          <p>${data.skills}</p>
+      <!-- Education Section -->
+      <div class="education">
+        <h3 class="section-title">Education</h3>
+        <div class="education-grid">
+          <!-- School -->
+          <div class="education-school">
+            <h4>School</h4>
+            <p><strong>Name:</strong> ${data.schoolName}</p>
+            <p><strong>City:</strong> ${data.schoolCity}</p>
+            <p><strong>Duration:</strong> ${data.schoolYear}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.schoolCgpa}</p>
+          </div>
+          <!-- College / Diploma -->
+          <div class="education-college">
+            <h4>College / Diploma</h4>
+            <p><strong>Name:</strong> ${data.collegeName}</p>
+            <p><strong>Course:</strong> ${data.collegeCourse}</p>
+            <p><strong>City:</strong> ${data.collegeCity}</p>
+            <p><strong>Duration:</strong> ${data.collegeYear}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.collegeCgpa}</p>
+          </div>
+          <!-- Engineering / Degree -->
+          <div class="education-degree">
+            <h4>Engineering / Degree</h4>
+            <p><strong>Name:</strong> ${data.degreeCollegeName}</p>
+            <p><strong>Degree:</strong> ${data.degreeCourse}</p>
+            <p><strong>City:</strong> ${data.degreeCity}</p>
+            <p><strong>Duration:</strong> ${data.degreeYear}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.degreeCgpa}</p>
+          </div>
         </div>
-      `;
-    }
+      </div>
+      <hr/>
 
+      <!-- Skills Section -->
+      <div class="skills">
+        <h3 class="section-title">Skills</h3>
+        <ul>
+          ${skillsItems}
+        </ul>
+      </div>
+      <hr/>
+
+      <!-- Projects Section -->
+      <div class="projects">
+        <h3 class="section-title">Projects</h3>
+        <p><strong>${data.projectName}</strong> (<a href="${data.projectLink}" target="_blank">View Project</a>)</p>
+        <p>${data.projectDesc}</p>
+      </div>
+      <hr/>
+
+      <!-- Achievements Section -->
+      <div class="achievements">
+        <h3 class="section-title">Achievements</h3>
+        <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+      </div>
+      <hr/>
+
+      <!-- Hobbies Section -->
+      <div class="hobbies">
+        <h3 class="section-title">Hobbies</h3>
+        <p>${data.hobbies}</p>
+      </div>
+    </div>
+  `;
+}
+
+    // Template 2 - Bold and Modern
+    function renderTemplate2(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+
+  return `
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, sans-serif;
+        background: #f0f0f0;
+      }
+      .resume {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .header {
+        background: #2a9d8f;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+      }
+      .header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        margin-bottom: 10px;
+      }
+      .header h2 {
+        margin: 10px 0;
+        font-size: 26px;
+      }
+      .content {
+        padding: 20px;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      .section h3 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        color: #2a9d8f;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .skills ul {
+        list-style: square inside;
+      }
+      a {
+        color: #2a9d8f;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+    <div class="resume">
+      <div class="header">
+        <img src="${data.profileImage}" alt="Profile">
+        <h2>${data.firstName} ${data.lastName}</h2>
+        <p>${data.designation}</p>
+      </div>
+      <div class="content">
+        <div class="section">
+          <h3>Contact</h3>
+          <p>${data.email} | ${data.phone}</p>
+          <p>${data.address}</p>
+        </div>
+        <div class="section">
+          <h3>About</h3>
+          <p>${data.summary}</p>
+        </div>
+        <div class="section">
+          <h3>Education</h3>
+          <div class="education-grid">
+            <div>
+              <h4>School</h4>
+              <p>${data.schoolName}</p>
+              <p>${data.schoolCity}</p>
+              <p>${data.schoolYear}</p>
+              <p>${data.schoolCgpa}</p>
+            </div>
+            <div>
+              <h4>College / Diploma</h4>
+              <p>${data.collegeName}</p>
+              <p>${data.collegeCourse}</p>
+              <p>${data.collegeCity} - ${data.collegeYear}</p>
+              <p>${data.collegeCgpa}</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <h4>Engineering / Degree</h4>
+              <p>${data.degreeCollegeName}</p>
+              <p>${data.degreeCourse}</p>
+              <p>${data.degreeCity} - ${data.degreeYear}</p>
+              <p>${data.degreeCgpa}</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>Skills</h3>
+          <ul>
+            ${skillsItems}
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Projects</h3>
+          <p><strong>${data.projectName}</strong> - <a href="${data.projectLink}" target="_blank">View Project</a></p>
+          <p>${data.projectDesc}</p>
+        </div>
+        <div class="section">
+          <h3>Achievements</h3>
+          <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+        </div>
+        <div class="section">
+          <h3>Hobbies</h3>
+          <p>${data.hobbies}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+    // Template 3 - Two-Column Card Layout
+    function renderTemplate3(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+
+  return `
+    <style>
+      .resume {
+        max-width: 900px;
+        margin: 40px auto;
+        font-family: Verdana, sans-serif;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+      .sidebar {
+        background: #264653;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      .sidebar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+      .sidebar h2 {
+        margin-bottom: 10px;
+      }
+      .sidebar p {
+        font-size: 14px;
+      }
+      .main {
+        padding: 20px;
+        background: #fff;
+      }
+      .section {
+        margin-bottom: 15px;
+      }
+      .section h3 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .skills ul {
+        list-style: circle inside;
+        padding-left: 20px;
+      }
+      a {
+        color: #264653;
+        text-decoration: none;
+      }
+    </style>
+
+    <div class="resume">
+      <div class="container">
+        <div class="sidebar">
+          <img src="${data.profileImage}" alt="Profile">
+          <h2>${data.firstName} ${data.lastName}</h2>
+          <p>${data.designation}</p>
+          <p>${data.address}</p>
+          <p>${data.email}</p>
+          <p>${data.phone}</p>
+          <p>${data.summary}</p>
+        </div>
+        <div class="main">
+          <div class="section">
+            <h3>Education</h3>
+            <div class="education-grid">
+              <div>
+                <h4>School</h4>
+                <p>${data.schoolName}</p>
+                <p>${data.schoolCity}</p>
+                <p>${data.schoolYear}</p>
+                <p>${data.schoolCgpa}</p>
+              </div>
+              <div>
+                <h4>College / Diploma</h4>
+                <p>${data.collegeName}</p>
+                <p>${data.collegeCourse}</p>
+                <p>${data.collegeCity} - ${data.collegeYear}</p>
+                <p>${data.collegeCgpa}</p>
+              </div>
+              <div>
+                <h4>Engineering / Degree</h4>
+                <p>${data.degreeCollegeName}</p>
+                <p>${data.degreeCourse}</p>
+                <p>${data.degreeCity} - ${data.degreeYear}</p>
+                <p>${data.degreeCgpa}</p>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <h3>Skills</h3>
+            <ul>
+              ${skillsItems}
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Projects</h3>
+            <p><strong>${data.projectName}</strong> - <a href="${data.projectLink}" target="_blank">View Project</a></p>
+            <p>${data.projectDesc}</p>
+          </div>
+          <div class="section">
+            <h3>Achievements</h3>
+            <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+          </div>
+          <div class="section">
+            <h3>Hobbies</h3>
+            <p>${data.hobbies}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+    // Template 4 - Border-Left Emphasis with Centered Header
+    function renderTemplate4(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+  return `
+    <style>
+      .resume {
+        max-width: 1000px;
+        margin: 40px auto;
+        display: flex;
+        font-family: Helvetica, sans-serif;
+        box-shadow: 2px 2px 20px rgba(0,0,0,0.1);
+      }
+      .sidebar {
+        width: 30%;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      .sidebar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+      .sidebar h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+      .sidebar p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .main {
+        width: 70%;
+        background: #fff;
+        padding: 20px;
+      }
+      .main .section {
+        margin-bottom: 20px;
+      }
+      .main .section h3 {
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .skills ul {
+        list-style: square inside;
+        padding-left: 20px;
+      }
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+    <div class="resume">
+      <div class="sidebar">
+        <img src="${data.profileImage}" alt="Profile">
+        <h2>${data.firstName} ${data.lastName}</h2>
+        <p><strong>${data.designation}</strong></p>
+        <p>${data.address}</p>
+        <p>${data.phone}</p>
+        <p>${data.email}</p>
+        <p>${data.summary}</p>
+      </div>
+      <div class="main">
+        <div class="section">
+          <h3>Education</h3>
+          <div class="education-grid">
+            <div>
+              <h4>School</h4>
+              <p>${data.schoolName}</p>
+              <p>${data.schoolCity}</p>
+              <p>${data.schoolYear}</p>
+              <p>${data.schoolCgpa}</p>
+            </div>
+            <div>
+              <h4>College / Diploma</h4>
+              <p>${data.collegeName}</p>
+              <p>${data.collegeCourse}</p>
+              <p>${data.collegeCity} - ${data.collegeYear}</p>
+              <p>${data.collegeCgpa}</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <h4>Engineering / Degree</h4>
+              <p>${data.degreeCollegeName}</p>
+              <p>${data.degreeCourse}</p>
+              <p>${data.degreeCity} - ${data.degreeYear}</p>
+              <p>${data.degreeCgpa}</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>Skills</h3>
+          <ul>
+            ${skillsItems}
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Projects</h3>
+          <p><strong>${data.projectName}</strong> - <a href="${data.projectLink}" target="_blank">View Project</a></p>
+          <p>${data.projectDesc}</p>
+        </div>
+        <div class="section">
+          <h3>Achievements</h3>
+          <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+        </div>
+        <div class="section">
+          <h3>Hobbies</h3>
+          <p>${data.hobbies}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+    // Template 5 - Compact Card-Style Layout
+    function renderTemplate5(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+  return `
+    <style>
+      .resume {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #fbf8f1;
+        color: #333;
+        border: 1px solid #e4dcd1;
+        font-family: Georgia, serif;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #e4dcd1;
+      }
+      .header h2 {
+        margin: 10px 0;
+        font-size: 30px;
+      }
+      .section {
+        margin-bottom: 25px;
+      }
+      .section h3 {
+        border-bottom: 1px solid #e4dcd1;
+        padding-bottom: 5px;
+        font-size: 22px;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .skills ul {
+        list-style-type: circle;
+        padding-left: 20px;
+      }
+      a {
+        color: #b07d62;
+        text-decoration: none;
+      }
+    </style>
+
+    <div class="resume">
+      <div class="header">
+        <img src="${data.profileImage}" alt="Profile Picture">
+        <h2>${data.firstName} ${data.middleName ? data.middleName + " " : ""}${data.lastName}</h2>
+        <h4>${data.designation}</h4>
+        <p>${data.address}</p>
+        <p>${data.email} | ${data.phone}</p>
+      </div>
+      <div class="section">
+        <h3>About Me</h3>
+        <p>${data.summary}</p>
+      </div>
+      <div class="section">
+        <h3>Education</h3>
+        <div class="education-grid">
+          <div>
+            <h4>School</h4>
+            <p>${data.schoolName}</p>
+            <p>${data.schoolCity}</p>
+            <p>${data.schoolYear}</p>
+            <p>${data.schoolCgpa}</p>
+          </div>
+          <div>
+            <h4>College/Diploma</h4>
+            <p>${data.collegeName}</p>
+            <p>${data.collegeCourse}</p>
+            <p>${data.collegeCity} - ${data.collegeYear}</p>
+            <p>${data.collegeCgpa}</p>
+          </div>
+          <div style="grid-column: span 2;">
+            <h4>Engineering / Degree</h4>
+            <p>${data.degreeCollegeName}</p>
+            <p>${data.degreeCourse}</p>
+            <p>${data.degreeCity} - ${data.degreeYear}</p>
+            <p>${data.degreeCgpa}</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Skills</h3>
+        <ul>
+          ${skillsItems}
+        </ul>
+      </div>
+      <div class="section">
+        <h3>Projects</h3>
+        <p><strong>${data.projectName}</strong> - <a href="${data.projectLink}" target="_blank">View Project</a></p>
+        <p>${data.projectDesc}</p>
+      </div>
+      <div class="section">
+        <h3>Achievements</h3>
+        <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+      </div>
+      <div class="section">
+        <h3>Hobbies</h3>
+        <p>${data.hobbies}</p>
+      </div>
+    </div>
+  `;
+}
+    // Template 6 - Dark Mode Resume
+    function renderTemplate6(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '';
+
+  return `
+    <style>
+      body {
+        background: #121212;
+        font-family: Roboto, sans-serif;
+        color: #eee;
+      }
+      .resume {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #1e1e1e;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      }
+      .header {
+        text-align: center;
+      }
+      .header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #2e2e2e;
+      }
+      .header h2 {
+        font-size: 28px;
+        margin: 10px 0;
+      }
+      .header h4 {
+        color: #bbb;
+      }
+      .section {
+        margin-top: 20px;
+      }
+      .section h3 {
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+        color: #1abc9c;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      .skills ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+      a {
+        color: #1abc9c;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+    <div class="resume">
+      <div class="header">
+        <img src="${data.profileImage}" alt="Profile">
+        <h2>${data.firstName} ${data.lastName}</h2>
+        <h4>${data.designation}</h4>
+        <p>${data.email} | ${data.phone}</p>
+        <p>${data.address}</p>
+        <p>${data.summary}</p>
+      </div>
+      <div class="section">
+        <h3>Education</h3>
+        <div class="education-grid">
+          <div>
+            <h4>School</h4>
+            <p>${data.schoolName}</p>
+            <p>${data.schoolCity}</p>
+            <p>${data.schoolYear}</p>
+            <p>${data.schoolCgpa}</p>
+          </div>
+          <div>
+            <h4>College / Diploma</h4>
+            <p>${data.collegeName}</p>
+            <p>${data.collegeCourse}</p>
+            <p>${data.collegeCity} - ${data.collegeYear}</p>
+            <p>${data.collegeCgpa}</p>
+          </div>
+          <div style="grid-column: span 2;">
+            <h4>Engineering / Degree</h4>
+            <p>${data.degreeCollegeName}</p>
+            <p>${data.degreeCourse}</p>
+            <p>${data.degreeCity} - ${data.degreeYear}</p>
+            <p>${data.degreeCgpa}</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Skills</h3>
+        <ul>
+          ${skillsItems}
+        </ul>
+      </div>
+      <div class="section">
+        <h3>Projects</h3>
+        <p><strong>${data.projectName}</strong> - <a href="${data.projectLink}" target="_blank">View Project</a></p>
+        <p>${data.projectDesc}</p>
+      </div>
+      <div class="section">
+        <h3>Achievements</h3>
+        <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+      </div>
+      <div class="section">
+        <h3>Hobbies</h3>
+        <p>${data.hobbies}</p>
+      </div>
+    </div>
+  `;
+}
+
+    // Render the chosen template based on "selectedTemplate" value.
     if (data) {
       const output = document.getElementById("resumeOutput");
-      output.innerHTML = selectedTemplate === "template2" ? renderTemplate2(data) : renderTemplate1(data);
+      switch (selectedTemplate) {
+        case "template1":
+          output.innerHTML = renderTemplate1(data);
+          break;
+        case "template2":
+          output.innerHTML = renderTemplate2(data);
+          break;
+        case "template3":
+          output.innerHTML = renderTemplate3(data);
+          break;
+        case "template4":
+          output.innerHTML = renderTemplate4(data);
+          break;
+        case "template5":
+          output.innerHTML = renderTemplate5(data);
+          break;
+        case "template6":
+          output.innerHTML = renderTemplate6(data);
+          break;
+        default:
+          output.innerHTML = renderTemplate1(data);
+      }
     }
   </script>
 </body>

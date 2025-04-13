@@ -10,6 +10,7 @@
   <div class="container1">
     <h2>Resume Builder</h2>
     <form id="resumeForm">
+      <!-- About Section -->
       <div class="section">
         <h3>About Section</h3>
         <div class="grid-3">
@@ -24,39 +25,73 @@
           <textarea id="summary" placeholder="Summary/About You"></textarea>
         </div>
       </div>
-
-      <div class="section">
-        <h3>Achievements</h3>
-        <div class="grid-2">
-          <input type="text" id="achievementTitle" placeholder="Title" />
-          <input type="text" id="achievementDesc" placeholder="Description" />
-        </div>
-      </div>
-
+      
+      <!-- Education Section -->
       <div class="section">
         <h3>Education</h3>
+        <!-- School Section -->
+        <h4>School</h4>
         <div class="grid-3">
-          <input type="text" id="school" placeholder="School" />
-          <input type="text" id="degree" placeholder="Degree" />
-          <input type="text" id="city" placeholder="City" />
-          <input type="date" id="startDate" />
-          <input type="date" id="endDate" />
-          <input type="text" id="eduDesc" placeholder="Description" />
+          <input type="text" id="schoolName" placeholder="School Name" />
+          <input type="text" id="schoolCity" placeholder="City" />
+          <input type="text" id="schoolYear" placeholder="Duration (e.g., 2020 - 2024)" />
+          <input type="text" id="schoolCgpa" placeholder="Marks/CGPA/Percentage" />
+        </div>
+        <!-- College/Diploma Section -->
+        <h4>College / Diploma</h4>
+        <div class="grid-3">
+          <input type="text" id="collegeName" placeholder="College Name" />
+          <input type="text" id="collegeCourse" placeholder="Course/Diploma" />
+          <input type="text" id="collegeCity" placeholder="City" />
+          <input type="text" id="collegeYear" placeholder="Duration (e.g., 2020 - 2024)" />
+          <input type="text" id="collegeCgpa" placeholder="Marks/CGPA/Percentage" />
+        </div>
+        <!-- Engineering/Degree Section -->
+        <h4>Engineering / Degree</h4>
+        <div class="grid-3">
+          <input type="text" id="degreeCollegeName" placeholder="College Name" />
+          <input type="text" id="degreeCourse" placeholder="Degree" />
+          <input type="text" id="degreeCity" placeholder="City" />
+          <input type="text" id="degreeYear" placeholder="Duration (e.g., 2020 - 2024)" />
+          <input type="text" id="degreeCgpa" placeholder="Marks/CGPA/Percentage" />
         </div>
       </div>
 
-      <div class="section">
-        <h3>Projects</h3>
-        <div class="grid-2">
-          <input type="text" id="projectName" placeholder="Project Name" />
-          <input type="text" id="projectLink" placeholder="Project Link" />
-          <input type="text" id="projectDesc" placeholder="Description" />
-        </div>
-      </div>
-
+      <!-- Skills Section -->
       <div class="section">
         <h3>Skills</h3>
         <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="section">
+        <h3>Projects</h3>
+        <div id="projectSection">
+          <div class="grid-2 projectEntry">
+            <input type="text" id="projectName" placeholder="Project Name" />
+            <input type="text" id="projectLink" placeholder="Project Link" />
+            <input type="text" id="projectDesc" placeholder="Description" />
+          </div>
+        </div>
+        <button type="button" id="addProject" class="btn2">Add Project</button>
+      </div>
+      
+      <!-- Achievements Section -->
+      <div class="section">
+        <h3>Achievements</h3>
+        <div id="achievementSection">
+          <div class="grid-2 achievementEntry">
+            <input type="text" id="achievementTitle" placeholder="Title" />
+            <input type="text" id="achievementDesc" placeholder="Description" />
+          </div>
+        </div>
+        <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
+      </div>
+
+      <!-- Hobbies Section -->
+      <div class="section">
+        <h3>Hobbies</h3>
+        <textarea id="hobbies" placeholder="Hobbies (comma separated)"></textarea>
       </div>
 
       <button type="submit" class="btn2">Preview Resume</button>
@@ -64,46 +99,110 @@
   </div>
 
   <script>
-    const imageInput = document.getElementById("profileImage");
-    let imageBase64 = "";
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('resumeForm');
 
-    imageInput.addEventListener("change", function () {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        imageBase64 = e.target.result;
-      };
-      if (this.files[0]) {
-        reader.readAsDataURL(this.files[0]);
-      }
-    });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    document.getElementById("resumeForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const data = {
-        firstName: document.getElementById("firstName").value,
-        middleName: document.getElementById("middleName").value,
-        lastName: document.getElementById("lastName").value,
-        designation: document.getElementById("designation").value,
-        address: document.getElementById("address").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        summary: document.getElementById("summary").value,
-        achievementTitle: document.getElementById("achievementTitle").value,
-        achievementDesc: document.getElementById("achievementDesc").value,
-        school: document.getElementById("school").value,
-        degree: document.getElementById("degree").value,
-        city: document.getElementById("city").value,
-        startDate: document.getElementById("startDate").value,
-        endDate: document.getElementById("endDate").value,
-        eduDesc: document.getElementById("eduDesc").value,
-        projectName: document.getElementById("projectName").value,
-        projectLink: document.getElementById("projectLink").value,
-        projectDesc: document.getElementById("projectDesc").value,
-        skills: document.getElementById("skills").value,
-        image: imageBase64
-      };
-      localStorage.setItem("resumeData", JSON.stringify(data));
-      window.location.href = "template.html";
+        // Build a formData object with non-repeatable fields.
+        const formData = {
+          firstName: document.getElementById('firstName').value.trim(),
+          middleName: document.getElementById('middleName').value.trim(),
+          lastName: document.getElementById('lastName').value.trim(),
+          designation: document.getElementById('designation').value.trim(),
+          address: document.getElementById('address').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          summary: document.getElementById('summary').value.trim(),
+          profileImage: '',
+          schoolName: document.getElementById('schoolName').value.trim(),
+          schoolCity: document.getElementById('schoolCity').value.trim(),
+          schoolYear: document.getElementById('schoolYear').value.trim(),
+          schoolCgpa: document.getElementById('schoolCgpa').value.trim(),
+          collegeName: document.getElementById('collegeName').value.trim(),
+          collegeCourse: document.getElementById('collegeCourse').value.trim(),
+          collegeCity: document.getElementById('collegeCity').value.trim(),
+          collegeYear: document.getElementById('collegeYear').value.trim(),
+          collegeCgpa: document.getElementById('collegeCgpa').value.trim(),
+          degreeCollegeName: document.getElementById('degreeCollegeName').value.trim(),
+          degreeCourse: document.getElementById('degreeCourse').value.trim(),
+          degreeCity: document.getElementById('degreeCity').value.trim(),
+          degreeYear: document.getElementById('degreeYear').value.trim(),
+          degreeCgpa: document.getElementById('degreeCgpa').value.trim(),
+          skills: document.getElementById('skills').value.trim(),
+          projects: [],
+          achievements: [],
+          hobbies: document.getElementById('hobbies').value.trim()
+        };
+
+        // Gather all Projects
+        document.querySelectorAll('#projectSection .projectEntry').forEach(function(entry) {
+          const projectNameInput = entry.querySelector('input[placeholder="Project Name"]');
+          const projectLinkInput = entry.querySelector('input[placeholder="Project Link"]');
+          const projectDescInput = entry.querySelector('input[placeholder="Description"]');
+          const projectName = projectNameInput ? projectNameInput.value.trim() : "";
+          const projectLink = projectLinkInput ? projectLinkInput.value.trim() : "";
+          const projectDesc = projectDescInput ? projectDescInput.value.trim() : "";
+          if(projectName || projectLink || projectDesc) {
+            formData.projects.push({ projectName, projectLink, projectDesc });
+          }
+        });
+
+        // Gather all Achievements
+        document.querySelectorAll('#achievementSection .achievementEntry').forEach(function(entry) {
+          const achievementTitleInput = entry.querySelector('input[placeholder="Title"]');
+          const achievementDescInput = entry.querySelector('input[placeholder="Description"]');
+          const achievementTitle = achievementTitleInput ? achievementTitleInput.value.trim() : "";
+          const achievementDesc = achievementDescInput ? achievementDescInput.value.trim() : "";
+          if(achievementTitle || achievementDesc) {
+            formData.achievements.push({ achievementTitle, achievementDesc });
+          }
+        });
+
+        // Handle profile image upload as base64
+        const profileImageInput = document.getElementById('profileImage');
+        if (profileImageInput.files.length > 0) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            formData.profileImage = reader.result;
+            localStorage.setItem('resumeData', JSON.stringify(formData));
+            alert('Resume data saved successfully!');
+            window.location.href = "template.html";
+          };
+          reader.readAsDataURL(profileImageInput.files[0]);
+        } else {
+          localStorage.setItem('resumeData', JSON.stringify(formData));
+          alert('Resume data saved successfully!');
+          window.location.href = "template.html";
+        }
+      });
+
+      // Add Project Functionality
+      const addProjectBtn = document.getElementById('addProject');
+      addProjectBtn.addEventListener('click', function () {
+        const projectSection = document.getElementById('projectSection');
+        const originalEntry = projectSection.querySelector('.projectEntry');
+        const newEntry = originalEntry.cloneNode(true);
+        newEntry.querySelectorAll('input').forEach(function(input) {
+          input.value = '';
+          input.removeAttribute('id');
+        });
+        projectSection.appendChild(newEntry);
+      });
+
+      // Add Achievement Functionality
+      const addAchievementBtn = document.getElementById('addAchievement');
+      addAchievementBtn.addEventListener('click', function () {
+        const achievementSection = document.getElementById('achievementSection');
+        const originalEntry = achievementSection.querySelector('.achievementEntry');
+        const newEntry = originalEntry.cloneNode(true);
+        newEntry.querySelectorAll('input').forEach(function(input) {
+          input.value = '';
+          input.removeAttribute('id');
+        });
+        achievementSection.appendChild(newEntry);
+      });
     });
   </script>
 </body>
