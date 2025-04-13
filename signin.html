@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In</title>
+  <link rel="stylesheet" href="signin.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="#">MyLogo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="main.html">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Sign Up</a></li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <form id="loginForm">
+    <center><h1 style="margin-top: 100px;">Sign In</h1></center>
+    <table align="center" height="300" width="350" cellpadding="10px">
+        <tr><td>Username</td></tr>
+        <tr><td><input type="text" id="username" placeholder="Username" required></td></tr>
+        <tr><td>Password</td></tr>
+        <tr><td><input type="password" id="password" placeholder="Password" required></td></tr>
+        <tr>
+          <td>
+            <input type="checkbox" checked="checked"> Remember Me
+            <a href="#">Forget password</a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <input type="submit" value="Login">
+          </td>
+        </tr>
+        <tr><td>Don't have an account? <a href="task.html">Sign Up</a></td></tr>
+    </table>
+  </form>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === "" || password === "") {
+        alert("Please fill in both username and password.");
+      } else {
+        // You can add further validation here
+        window.location.href = "main.html"; // Redirect to main.html
+      }
+    });
+  </script>
+</body>
+</html>
