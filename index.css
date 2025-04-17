@@ -10,7 +10,6 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* background: linear-gradient(to right, #6a11cb, #2575fc); */
   color: white;
   min-height: 100vh;
   display: flex;
@@ -95,10 +94,6 @@ nav {
   .nav-links.active {
     display: flex;
   }
-
-  
-
-  
 }
 
 /* HERO SECTION */
@@ -137,4 +132,42 @@ p {
   background-color: #2575fc;
   color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+footer {
+  background-color: #b52d2d;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  color: #ffffff;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+  color: #ff4d4d;
 }
