@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('leadspace_article.jpg');
+  background-image: url('/assets/leadspace_article.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

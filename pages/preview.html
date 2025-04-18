@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Resume Preview</title>
-  <link rel="stylesheet" href="preview.css" />
+  <link rel="stylesheet" href="/css/preview.css" />
 </head>
 <body>
   
@@ -24,12 +24,29 @@
   // Convert comma-separated skills into an unordered list of bullet items
   const skillsItems = data.skills
     ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '';
+    : '<li>No skills available</li>';
 
   // Convert comma-separated hobbies into an unordered list of bullet items
   const hobbiesItems = data.hobbies
     ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '';
+    : '<li>No hobbies available</li>';
+
+  // Render projects dynamically
+  const projectsItems = data.projects && data.projects.length > 0
+    ? data.projects.map(project => `
+      <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
+      <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
+      <p>${project.projectDesc || "No description available."}</p>
+    `).join('')
+    : '<p>No projects available.</p>';
+
+  // Render achievements dynamically
+  const achievementsItems = data.achievements && data.achievements.length > 0
+    ? data.achievements.map(achievement => `
+      <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
+      ${achievement.achievementDesc || "No description available."}</p>
+    `).join('')
+    : '<p>No achievements available.</p>';
 
   return `
     <style>
@@ -124,12 +141,12 @@
       <!-- About Section -->
       <div class="header">
         <img src="${data.profileImage}" alt="Profile Image" />
-        <h2>${data.firstName} ${data.middleName ? data.middleName + ' ' : ''}${data.lastName}</h2>
-        <h4>${data.designation}</h4>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Phone:</strong> ${data.phone}</p>
-        <p><strong>Address:</strong> ${data.address}</p>
-        <p><strong>About Me:</strong> ${data.summary}</p>
+        <h2>${data.firstName || "No First Name"} ${data.middleName ? data.middleName + ' ' : ''}${data.lastName || "No Last Name"}</h2>
+        <h4>${data.designation || "No Designation"}</h4>
+        <p><strong>Email:</strong> ${data.email || "No Email"}</p>
+        <p><strong>Phone:</strong> ${data.phone || "No Phone"}</p>
+        <p><strong>Address:</strong> ${data.address || "No Address"}</p>
+        <p><strong>About Me:</strong> ${data.summary || "No Summary"}</p>
       </div>
       <hr/>
 
@@ -140,28 +157,28 @@
           <!-- School -->
           <div class="education-school">
             <h4>School</h4>
-            <p><strong>Name:</strong> ${data.schoolName}</p>
-            <p><strong>City:</strong> ${data.schoolCity}</p>
-            <p><strong>Duration:</strong> ${data.schoolYear}</p>
-            <p><strong>Marks/CGPA:</strong> ${data.schoolCgpa}</p>
+            <p><strong>Name:</strong> ${data.schoolName || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.schoolCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.schoolYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.schoolCgpa || "Not provided"}</p>
           </div>
           <!-- College / Diploma -->
           <div class="education-college">
             <h4>College / Diploma</h4>
-            <p><strong>Name:</strong> ${data.collegeName}</p>
-            <p><strong>Course:</strong> ${data.collegeCourse}</p>
-            <p><strong>City:</strong> ${data.collegeCity}</p>
-            <p><strong>Duration:</strong> ${data.collegeYear}</p>
-            <p><strong>Marks/CGPA:</strong> ${data.collegeCgpa}</p>
+            <p><strong>Name:</strong> ${data.collegeName || "Not provided"}</p>
+            <p><strong>Course:</strong> ${data.collegeCourse || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.collegeCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.collegeYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.collegeCgpa || "Not provided"}</p>
           </div>
           <!-- Engineering / Degree -->
           <div class="education-degree">
             <h4>Engineering / Degree</h4>
-            <p><strong>Name:</strong> ${data.degreeCollegeName}</p>
-            <p><strong>Degree:</strong> ${data.degreeCourse}</p>
-            <p><strong>City:</strong> ${data.degreeCity}</p>
-            <p><strong>Duration:</strong> ${data.degreeYear}</p>
-            <p><strong>Marks/CGPA:</strong> ${data.degreeCgpa}</p>
+            <p><strong>Name:</strong> ${data.degreeCollegeName || "Not provided"}</p>
+            <p><strong>Degree:</strong> ${data.degreeCourse || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.degreeCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.degreeYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.degreeCgpa || "Not provided"}</p>
           </div>
         </div>
       </div>
@@ -179,15 +196,14 @@
       <!-- Projects Section -->
       <div class="projects">
         <h3 class="section-title">Projects</h3>
-        <p><strong>${data.projectName}</strong> (<a href="${data.projectLink}" target="_blank">View Project</a>)</p>
-        <p>${data.projectDesc}</p>
+        ${projectsItems}
       </div>
       <hr/>
 
       <!-- Achievements Section -->
       <div class="achievements">
         <h3 class="section-title">Achievements</h3>
-        <p><strong>${data.achievementTitle}</strong>: ${data.achievementDesc}</p>
+        ${achievementsItems}
       </div>
       <hr/>
 
@@ -201,7 +217,6 @@
     </div>
   `;
 }
-
 
 
     // Template 2 - Bold and Modern
@@ -738,6 +753,7 @@
         margin-bottom: 10px;
       }
       .header h2 {
+        color:white;
         margin: 10px 0;
         font-size: 24px;
       }

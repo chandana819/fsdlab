@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Build Your Resume</title>
-  <link rel="stylesheet" href="builder.css" />
+  <link rel="stylesheet" href="/css/builder.css" />
 </head>
 <body>
   <div class="container1">
@@ -180,7 +180,7 @@
     function saveData(data) {
       localStorage.setItem('resumeData', JSON.stringify(data));
       alert('Resume data saved successfully!');
-      window.location.href = "template.html";
+      window.location.href = "/pages/template.html";
     }
   });
 

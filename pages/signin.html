@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign In</title>
-  <link rel="stylesheet" href="signin.css" />
+  <link rel="stylesheet" href="/css/signin.css" />
 </head>
 <body>
   <nav>
     <div class="logo">
-      <a href="#">MyLogo</a>
+      <a href="/main.html">MyLogo</a>
     </div>
     <ul class="nav-links">
-      <li><a href="main.html">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Sign Up</a></li>
+      <li><a href="/main.html">Home</a></li>
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="/pages/signup.html">Sign Up</a></li>
     </ul>
     <div class="hamburger">
       <div></div>
@@ -42,7 +42,7 @@
             <input type="submit" value="Login">
           </td>
         </tr>
-        <tr><td>Don't have an account? <a href="signup.html">Sign Up</a></td></tr>
+        <tr><td>Don't have an account? <a href="/pages/signup.html">Sign Up</a></td></tr>
     </table>
   </form>
 
@@ -57,7 +57,7 @@
         alert("Please fill in both username and password.");
       } else {
         // You can add further validation here
-        window.location.href = "main.html"; // Redirect to main.html
+        window.location.href = "/main.html"; // Redirect to main.html
       }
     });
   </script>
