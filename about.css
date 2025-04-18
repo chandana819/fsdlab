@@ -199,6 +199,11 @@
     font-size: 14px;
   }
   
-  footer p {
-    margin: 0;
+  footer p a{
+    text-decoration: none;
+    color: rgb(231, 59, 25);
+  }
+  
+  footer p a:hover{
+    color: #fdf8f8;
   }

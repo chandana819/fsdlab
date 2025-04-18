@@ -102,10 +102,17 @@
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-color); */
   }
+  .leader-section h2 {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+  }
+  
   
   .leader-card {
     display: inline-block;
-    background-color: var(--container-bg);
+    background-color: aliceblue;
+    /* background-color: var(--container-bg); */
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: 0 6px 16px var(--shadow-color);
@@ -120,8 +127,8 @@
   }
   
   .leader-card img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 10px;
   }
@@ -156,7 +163,8 @@
   }
   
   .team-card {
-    background-color: var(--container-bg);
+    background-color: #fff;
+    /* background-color: var(--container-bg); */
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px var(--shadow-color);
     padding: 20px;
@@ -170,8 +178,8 @@
   }
   
   .team-card img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 10px;
   }
@@ -193,8 +201,13 @@
     font-size: 14px;
   }
   
-  footer p {
-    margin: 0;
+  footer p a{
+    text-decoration: none;
+    color: rgb(226, 44, 44);
+  }
+  
+  footer p a:hover{
+    color: #fdf8f8;
   }
   
   @media (max-width: 768px) {
