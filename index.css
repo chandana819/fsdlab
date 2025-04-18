@@ -17,7 +17,6 @@ body {
   align-items: center;
 }
 
-/* NAVBAR */
 nav {
   background-color: #0a046e;
   padding: 10px 20px;
@@ -96,7 +95,6 @@ nav {
   }
 }
 
-/* HERO SECTION */
 .container {
   text-align: center;
   color: whitesmoke;
@@ -134,9 +132,9 @@ p {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* FOOTER */
 footer {
-  background-color: #b52d2d;
+  background-color: #03103b;
+  height: 100px;
   width: 100%;
   padding: 20px 0;
   text-align: center;

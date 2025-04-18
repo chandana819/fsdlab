@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Gradient background */
+      transition: background 0.6s ease;
+    }
+
+    .login-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      width: 350px;
+      transition: transform 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: scale(1.02);
+      background-color: #e3f2fd;
+      font-weight: bold;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #282323;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: hwb(30 8% 91%);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #1a1919;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .signup-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+
+    .signup-text a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+
+      <!-- Changed type to button to prevent default form submission -->
+      <button type="button" onclick="submitForm()">Sign Up</button>
+
+      <p class="signup-text">Already have an account? <a href="signin.html">Sign in</a></p>
+    </form>
+  </div>
+
+  <script>
+    function submitForm() {
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (!username || !email || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      // Optional: Save data to localStorage if needed
+      // localStorage.setItem("username", username);
+
+      // Redirect to signin page
+      window.location.href = 'signin.html';
+    }
+  </script>
+</body>
+</html>

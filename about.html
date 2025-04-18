@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features</title>
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <a href="/main.html">MyLogo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/main.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li>
+        <a href="signup.html" class="signup-btn">Signup</a>
+      </li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="about-header">
+      <h1>About Us</h1>
+    </header>
+    
+    <section class="about-section">
+      <h2>Who We Are</h2>
+      <p>
+        Welcome to our Resume Builder project. With a focus on simplicity and efficiency, we aim to help individuals craft resumes that highlight their strengths and accomplishments in the best possible way.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to provide an easy-to-use tool that empowers you to showcase your skills, education, projects, and achievements seamlessly. We believe a great resume is the first step to success.
+      </p>
+    </section>
+
+    <h1>Our Features</h1>
+    <div class="features">
+      <a href="builder.html" class="feature-card">
+        <h3>Multi-Step Form</h3>
+        <p>Fill in your personal and professional details step by step for better organization.</p>
+      </a>
+      <a href="template.html" class="feature-card">
+        <h3>Resume Templates</h3>
+        <p>Choose from a variety of modern and professional resume templates tailored for every industry.</p>
+      </a>
+      <a href="preview.html" class="feature-card">
+        <h3>Live Preview</h3>
+        <p>Instantly preview your resume as you build it to see how it will appear to recruiters.</p>
+      </a>
+      <div class="feature-card">
+        <h3>PDF Export</h3>
+        <p>Download your resume instantly in PDF format, ready to send or print.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Profile Image Upload</h3>
+        <p>Optionally upload a profile picture to personalize your resume further.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Data Saved in Browser</h3>
+        <p>Your data is stored securely in your browser using localStorage. No sign-up needed.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 SRKR Engineering College | CSIT Department</p>
+  </footer>
+
+  <script>
+    // Mobile Nav Toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  </script>
+
+</body>
+</html>
