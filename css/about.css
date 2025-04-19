@@ -56,11 +56,14 @@
     font-weight: 500;
   }
   
-  .nav-links a:hover {
+  .nav-links a.active {
     background-color: #ffffff;
-    color: #0a046e;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: 0.3s;
   }
+  
   
   .hamburger {
     display: none;

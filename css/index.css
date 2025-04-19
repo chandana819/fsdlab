@@ -24,7 +24,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100px;
+  height: 80px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -46,19 +46,28 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
   padding: 8px 16px;
   border-radius: 20px;
   transition: 0.3s;
   font-weight: 500;
+
 }
 
-.nav-links a:hover {
+.nav-links a.active {
   background-color: #ffffff;
   color: #1f1f1f;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: 0.3s;
 }
+
+
+.signup-btn {
+  background-color: red;
+}
+
 
 .hamburger {
   display: none;
@@ -74,16 +83,12 @@ nav {
   transition: all 0.3s ease;
 }
 
-.signup-btn {
-  background-color: red;
-}
-
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 60px;
+    top: 80px;
     right: 0;
-    background-color: #1f1f1f;
+    background-color: #0a046e;
     flex-direction: column;
     width: 200px;
     padding: 20px;
@@ -93,9 +98,13 @@ nav {
   .nav-links.active {
     display: flex;
   }
+
+  .hamburger {
+    display: flex;
+  }
 }
 
-.container {
+.main-content {
   text-align: center;
   color: whitesmoke;
   background: rgba(0, 0, 0, 0.6); /* semi-transparent white */
@@ -143,12 +152,12 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-footer p a{
+footer p a {
   text-decoration: none;
   color: rgb(226, 44, 44);
 }
 
-footer p a:hover{
+footer p a:hover {
   color: #fdf8f8;
 }
 
@@ -178,3 +187,17 @@ footer p a:hover{
 .footer-links li a:hover {
   color: #ff4d4d;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    width: 80%;
+    margin-top: 30%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-content{
+    margin-top: 40%;
+  }
+}
+
