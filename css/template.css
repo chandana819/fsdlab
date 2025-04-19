@@ -143,8 +143,11 @@ button:focus {
   }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
   .container1 {
     padding: 20px;
   }
@@ -162,3 +165,10 @@ button:focus {
     padding: 16px;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .template-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
