@@ -56,6 +56,13 @@
     font-weight: 500;
   }
   
+  .nav-links a:hover {
+    background-color: #ffffff;
+    color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: 0.3s;
+  }
   .nav-links a.active {
     background-color: #ffffff;
     color: #1f1f1f;
@@ -80,6 +87,7 @@
   }
   
   
+<<<<<<< HEAD
   /* .signup-btn {
     background-color: #ff0000;
     color: white;
@@ -88,12 +96,20 @@
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+=======
+  .nav-links i {
+    color: #FFD700; 
+    font-size: 20px; 
+    margin-right: 8px;
+    transition: color 0.3s ease;
   }
   
-  .signup-btn:hover {
-    background-color: #d10000;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-  } */
+  
+  .nav-links a:hover i {
+    color: #0a046e; 
+>>>>>>> 252068176fca5425d45b52990e6adc1401ea4fc5
+  }
+  
   
   @media (max-width: 768px) {
     nav {
