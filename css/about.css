@@ -64,6 +64,14 @@
     border-radius: 20px;
     transition: 0.3s;
   }
+  .nav-links a.active {
+    background-color: #ffffff;
+    color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: 0.3s;
+  }
+  
   
   .hamburger {
     display: none;
@@ -91,6 +99,7 @@
   .nav-links a:hover i {
     color: #0a046e; 
   }
+  
   
   @media (max-width: 768px) {
     nav {
