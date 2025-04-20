@@ -4,7 +4,7 @@
   --secondary-hover: #0056b3;
   --bg-color: #f4f4f9;
   --container-bg: #ffffff;
-  --input-border: #ccc;
+  --input-border: #6b6767;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -64,6 +64,7 @@ input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="file"],
+input[type="url"],
 textarea {
   width: 100%;
   padding: 12px;
@@ -78,6 +79,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="date"]:focus,
 input[type="file"]:focus,
+input[type="url"]:focus,
 textarea:focus {
   border-color: var(--secondary-color);
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);

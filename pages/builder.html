@@ -14,53 +14,60 @@
       <div class="section">
         <h3>About Section</h3>
         <div class="grid-3">
-          <input type="text" id="firstName" placeholder="First Name" required />
-          <input type="text" id="middleName" placeholder="Middle Name (optional)" />
-          <input type="text" id="lastName" placeholder="Last Name" required />
+          <input type="text" id="firstName" placeholder="First Name" required pattern="[A-Za-z]+" title="Only letters allowed" />
+          <input type="text" id="middleName" placeholder="Middle Name (optional)" pattern="[A-Za-z]*" title="Only letters allowed" />
+          <input type="text" id="lastName" placeholder="Last Name" required pattern="[A-Za-z]+" title="Only letters allowed" />
           <input type="file" id="profileImage" accept="image/*" />
           <input type="text" id="designation" placeholder="Designation" required />
           <input type="text" id="address" placeholder="Address" />
-          <input type="email" id="email" placeholder="Email" required />
-          <input type="text" id="phone" placeholder="Phone Number" required />
-          <textarea id="summary" placeholder="Summary/About You"></textarea>
+          <input type="email" id="email" placeholder="Email" required title="Enter a valid email" />
+          <input type="text" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" title="Enter a 10-digit phone number" />
         </div>
       </div>
-      
+      <!-- Summary Section -->
+      <div class="section">
+          <h3>Summary</h3>
+        <textarea id="summary" placeholder="Write a brief summary about yourself" required></textarea>
+      </div>
+
+
       <!-- Education Section -->
       <div class="section">
         <h3>Education</h3>
         <!-- School Section -->
         <h4>School</h4>
         <div class="grid-3">
-          <input type="text" id="schoolName" placeholder="School Name"required />
-          <input type="text" id="schoolCity" placeholder="City" required/>
-          <input type="text" id="schoolYear" placeholder="Duration (e.g., 2020 - 2024)" required/>
-          <input type="text" id="schoolCgpa" placeholder="Marks/CGPA/Percentage" />
+          <input type="text" id="schoolName" placeholder="School Name" required />
+          <input type="text" id="schoolCity" placeholder="City" required pattern="[A-Za-z\s]+" title="Only letters allowed" />
+          <input type="text" id="schoolYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" title="Format: 2020 - 2024" />
+          <input type="text" id="schoolCgpa" placeholder="Marks/CGPA/Percentage" pattern="^\d+(\.\d{1,2})?$" title="Valid format: 8.5 or 75" />
         </div>
+
         <!-- College/Diploma Section -->
         <h4>College / Diploma</h4>
         <div class="grid-3">
-          <input type="text" id="collegeName" placeholder="College Name" required/>
-          <input type="text" id="collegeCourse" placeholder="Course/Diploma" required/>
-          <input type="text" id="collegeCity" placeholder="City" required/>
-          <input type="text" id="collegeYear" placeholder="Duration (e.g., 2020 - 2024)" required/>
-          <input type="text" id="collegeCgpa" placeholder="Marks/CGPA/Percentage"required />
+          <input type="text" id="collegeName" placeholder="College Name" required />
+          <input type="text" id="collegeCourse" placeholder="Course/Diploma" required />
+          <input type="text" id="collegeCity" placeholder="City" required pattern="[A-Za-z\s]+" title="Only letters allowed" />
+          <input type="text" id="collegeYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" />
+          <input type="text" id="collegeCgpa" placeholder="Marks/CGPA/Percentage" required pattern="^\d+(\.\d{1,2})?$" />
         </div>
+
         <!-- Engineering/Degree Section -->
         <h4>Engineering / Degree</h4>
         <div class="grid-3">
-          <input type="text" id="degreeCollegeName" placeholder="College Name"required />
-          <input type="text" id="degreeCourse" placeholder="Degree"required />
-          <input type="text" id="degreeCity" placeholder="City"required />
-          <input type="text" id="degreeYear" placeholder="Duration (e.g., 2020 - 2024)"required />
-          <input type="text" id="degreeCgpa" placeholder="Marks/CGPA/Percentage" required/>
+          <input type="text" id="degreeCollegeName" placeholder="College Name" required />
+          <input type="text" id="degreeCourse" placeholder="Degree" required />
+          <input type="text" id="degreeCity" placeholder="City" required pattern="[A-Za-z\s]+" />
+          <input type="text" id="degreeYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" />
+          <input type="text" id="degreeCgpa" placeholder="Marks/CGPA/Percentage" required pattern="^\d+(\.\d{1,2})?$" />
         </div>
       </div>
 
       <!-- Skills Section -->
       <div class="section">
         <h3>Skills</h3>
-        <textarea id="skills" placeholder="Skills (comma separated)"required></textarea>
+        <textarea id="skills" placeholder="Skills (comma separated)" required></textarea>
       </div>
 
       <!-- Projects Section -->
@@ -68,21 +75,21 @@
         <h3>Projects</h3>
         <div id="projectSection">
           <div class="grid-2 projectEntry">
-            <input type="text" id="projectName" placeholder="Project Name" />
-            <input type="text" id="projectLink" placeholder="Project Link" />
-            <input type="text" id="projectDesc" placeholder="Description" />
+            <input type="text" id="projectName" placeholder="Project Name" required />
+            <input type="url" id="projectLink" placeholder="Project Link (https://...)" pattern="https?://.+" title="Start with http:// or https://" />
+            <input type="text" id="projectDesc" placeholder="Description" required />
           </div>
         </div>
         <button type="button" id="addProject" class="btn2">Add Project</button>
       </div>
-      
+
       <!-- Achievements Section -->
       <div class="section">
         <h3>Achievements</h3>
         <div id="achievementSection">
           <div class="grid-2 achievementEntry">
-            <input type="text" id="achievementTitle" placeholder="Title" />
-            <input type="text" id="achievementDesc" placeholder="Description" />
+            <input type="text" id="achievementTitle" placeholder="Title" required />
+            <input type="text" id="achievementDesc" placeholder="Description" required />
           </div>
         </div>
         <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
@@ -94,9 +101,10 @@
         <textarea id="hobbies" placeholder="Hobbies (comma separated)"></textarea>
       </div>
 
-      <button type="submit" class="btn2">Preview Resume</button>
+      <button type="submit" class="btn2">Submit</button>
     </form>
   </div>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {

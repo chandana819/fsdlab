@@ -110,14 +110,17 @@
   
     .nav-links {
       position: absolute;
-      top: 80px;
+      top: 40px;
       right: 0;
-      background-color: #1f1f1f;
+      background-color: #181a1e;
       flex-direction: column;
-      width: 200px;
+      width: 150px;
       padding: 20px;
       display: none;
       border-radius: 0 0 12px 12px;
+    }
+    .nav-links:hover {
+      background-color: #ccc;
     }
   
     .nav-links.show {

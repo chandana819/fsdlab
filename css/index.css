@@ -24,7 +24,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 100px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -55,6 +55,13 @@ nav {
 
 }
 
+.nav-links a:hover {
+  background-color: #ffffff;
+  color: #1f1f1f;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: 0.3s;
+}
 .nav-links a.active {
   background-color: #ffffff;
   color: #1f1f1f;
@@ -65,7 +72,7 @@ nav {
 
 
 .signup-btn {
-  background-color: red;
+  background-color: rgb(195, 14, 14);
 }
 
 
@@ -81,6 +88,17 @@ nav {
   width: 25px;
   margin: 4px;
   transition: all 0.3s ease;
+}
+
+.nav-links i {
+  color: #FFD700; 
+  font-size: 20px; 
+  margin-right: 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover i {
+  color: #0a046e; 
 }
 
 @media (max-width: 768px) {
