@@ -6,181 +6,248 @@
   <title>Resume Preparation Form</title>
   <link rel="stylesheet" href="/css/builderemp.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
 
-    <nav>
-        <div class="logo">
-          <a href="/main.html"><i class="fas fa-star"></i> MyLogo</a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="/pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-          <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-          <li>
-            <a href="/pages/signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Signup</a>
-          </li>
-        </ul>
-        <div class="hamburger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </nav>
-      
-      
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <a href="/main.html"><i class="fas fa-star"></i> MyLogo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="/pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="/pages/signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Signup</a></li>
+    </ul>
+    <div class="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+  </nav>
+
+  <!-- Resume Form -->
   <div class="container1">
     <h2>Employee Resume Preparation Form</h2>
     <form id="resumeForm">
+      
+      <!-- Personal Info -->
       <div class="section">
         <h3>Personal Information</h3>
         <div class="grid-3">
-          <input type="text" id="firstName" placeholder="First Name" required pattern="[A-Za-z]+" title="First Name should only contain letters." />
-          <input type="text" id="middleName" placeholder="Middle Name (optional)" pattern="[A-Za-z]+" title="Middle Name should only contain letters." />
-          <input type="text" id="lastName" placeholder="Last Name" required pattern="[A-Za-z]+" title="Last Name should only contain letters." />
+          <input type="text" id="firstName" placeholder="First Name" required pattern="[A-Za-z]+" />
+          <input type="text" id="middleName" placeholder="Middle Name (optional)" pattern="[A-Za-z]+" />
+          <input type="text" id="lastName" placeholder="Last Name" required pattern="[A-Za-z]+" />
           <input type="file" id="profileImage" accept="image/*" />
           <input type="text" id="designation" placeholder="Current Designation" required />
           <input type="text" id="address" placeholder="Address" required />
-          <input type="email" id="email" placeholder="Email" required title="Please enter a valid email (e.g., example@example.com)." />
-          <input type="tel" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" title="Phone number should be 10 digits." />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="tel" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" />
         </div>
       </div>
 
+      <!-- Summary -->
       <div class="section">
         <h3>Professional Summary</h3>
-        <textarea id="summary" placeholder="Brief Summary About Yourself" required minlength="10" maxlength="500" title="Your summary should be between 10 and 500 characters."></textarea>
+        <textarea id="summary" placeholder="Brief Summary About Yourself" required minlength="10" maxlength="500"></textarea>
       </div>
 
+      <!-- Experience -->
       <div class="section">
         <h3>Experience</h3>
         <div id="experienceSection">
           <div class="grid-2 experienceEntry">
-            <input type="text" id="jobTitle" placeholder="Job Title" required />
-            <input type="text" id="companyName" placeholder="Company Name" required />
-            <input type="text" id="location" placeholder="Location" required />
-            <input type="text" id="duration" placeholder="Duration (e.g., Jan 2020 - Dec 2024)" required pattern="^[a-zA-Z]+\s[0-9]{4}\s-\s[a-zA-Z]+\s[0-9]{4}$" title="Duration should be in the format 'Jan 2020 - Dec 2024'." />
-            <textarea id="responsibilities" placeholder="Key Responsibilities/Achievements" required minlength="10" maxlength="500" title="Your description should be between 10 and 500 characters."></textarea>
+            <input type="text" placeholder="Job Title" required />
+            <input type="text" placeholder="Company Name" required />
+            <input type="text" placeholder="Location" required />
+            <input type="text" placeholder="Duration (e.g., Jan 2020 - Dec 2024)" required pattern="^[a-zA-Z]+\s[0-9]{4}\s-\s[a-zA-Z]+\s[0-9]{4}$" />
+            <textarea placeholder="Key Responsibilities/Achievements" required minlength="10" maxlength="500"></textarea>
           </div>
         </div>
         <button type="button" id="addExperience" class="btn2">Add Experience</button>
       </div>
 
+      <!-- Skills -->
       <div class="section">
         <h3>Skills</h3>
-        <textarea id="skills" placeholder="Skills (comma separated)" required pattern=".[A-Za-z0-9]+(,.)?" title="Skills should be separated by commas, e.g., 'Java, Python, Excel'." minlength="3"></textarea>
+        <textarea id="skills" placeholder="Skills (comma separated)" required minlength="3"></textarea>
       </div>
 
+      <!-- Education -->
       <div class="section">
         <h3>Education</h3>
         <div class="grid-3">
-          <input type="text" id="degree" placeholder="Degree (e.g., B.Tech, MBA)" required />
+          <input type="text" id="degree" placeholder="Degree" required />
           <input type="text" id="collegeName" placeholder="College Name" required />
           <input type="text" id="collegeCity" placeholder="City" required />
-          <input type="number" id="year" placeholder="Year of Graduation" required min="1980" max="2099" title="Year should be a valid 4-digit number." />
-          <input type="text" id="marks" placeholder="Marks/CGPA" required pattern="^(\d+(\.\d{1,2})?|10\.0)$" title="Please enter marks as a number between 0 and 10 (e.g., 8.5)." />
+          <input type="number" id="year" placeholder="Year of Graduation" required min="1980" max="2099" />
+          <input type="text" id="marks" placeholder="Marks/CGPA" required pattern="^(\d+(\.\d{1,2})?|10\.0)$" />
         </div>
       </div>
 
+      <!-- Projects -->
       <div class="section">
         <h3>Projects</h3>
         <div id="projectSection">
           <div class="grid-2 projectEntry">
-            <input type="text" id="projectName" placeholder="Project Name" />
-            <input type="url" id="projectLink" placeholder="Project Link (optional, e.g., https://github.com/project)" pattern="https?://.+" title="Please enter a valid URL starting with http:// or https://." />
-            <textarea id="projectDesc" placeholder="Description" required minlength="10" maxlength="500" title="Your description should be between 10 and 500 characters."></textarea>
+            <input type="text" placeholder="Project Name" />
+            <input type="url" placeholder="Project Link (optional)" />
+            <textarea placeholder="Description" required minlength="10" maxlength="500"></textarea>
           </div>
         </div>
         <button type="button" id="addProject" class="btn2">Add Project</button>
       </div>
 
+      <!-- Achievements -->
       <div class="section">
         <h3>Achievements</h3>
         <div id="achievementSection">
           <div class="grid-2 achievementEntry">
-            <input type="text" id="achievementTitle" placeholder="Title" required />
-            <textarea id="achievementDesc" placeholder="Description" required minlength="10" maxlength="500" title="Your description should be between 10 and 500 characters."></textarea>
+            <input type="text" placeholder="Title" required />
+            <textarea placeholder="Description" required minlength="10" maxlength="500"></textarea>
           </div>
         </div>
         <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
       </div>
 
+      <!-- Hobbies -->
       <div class="section">
         <h3>Hobbies</h3>
-        <textarea id="hobbies" placeholder="Hobbies (comma separated)" required pattern=".[A-Za-z]+(,.)?" title="Hobbies should be separated by commas, e.g., 'Reading, Painting, Traveling'." minlength="3"></textarea>
+        <textarea id="hobbies" placeholder="Hobbies (comma separated)" required minlength="3"></textarea>
       </div>
 
+      <!-- Submit -->
       <button type="submit" class="btn2">Submit</button>
     </form>
   </div>
+
+  <!-- JavaScript -->
   <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-  
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-  
     document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('resumeForm');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission
-
-    // Collect all form data as before
-    const formData = {
-      firstName: document.getElementById('firstName').value.trim(),
-      middleName: document.getElementById('middleName').value.trim(),
-      lastName: document.getElementById('lastName').value.trim(),
-      designation: document.getElementById('designation').value.trim(),
-      address: document.getElementById('address').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      summary: document.getElementById('summary').value.trim(),
-      profileImage: '',
-      skills: document.getElementById('skills').value.trim(),
-      hobbies: document.getElementById('hobbies').value.trim(),
-      projects: [],
-      achievements: [],
-      education: {
-        degree: document.getElementById('degree').value.trim(),
-        collegeName: document.getElementById('collegeName').value.trim(),
-        collegeCity: document.getElementById('collegeCity').value.trim(),
-        year: document.getElementById('year').value.trim(),
-        marks: document.getElementById('marks').value.trim(),
-      },
-      experience: []
-    };
-
-    // Collect Projects, Achievements, and Experience (same as your current logic)
-
-    // Handle Profile Image
-    const profileImageInput = document.getElementById('profileImage');
-    if (profileImageInput.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = function () {
-        formData.profileImage = reader.result;
-        saveData(formData);
-      };
-      reader.readAsDataURL(profileImageInput.files[0]);
-    } else {
-      saveData(formData);
-    }
-
-    function saveData(data) {
-      try {
-        localStorage.setItem('resumeData', JSON.stringify(data)); // Store the data
-        alert('Resume data saved successfully!');
-        window.location.href = "/pages/template1.html"; // Navigate to template1.html
-      } catch (error) {
-        alert('Error saving data to localStorage: ' + error);
-      }
-    }
-  });
-});
-
-
-
+      const form = document.getElementById('resumeForm');
+  
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+  
+        // Initialize formData
+        let formData = {
+          firstName: document.getElementById('firstName').value.trim(),
+          middleName: document.getElementById('middleName').value.trim(),
+          lastName: document.getElementById('lastName').value.trim(),
+          designation: document.getElementById('designation').value.trim(),
+          address: document.getElementById('address').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          summary: document.getElementById('summary').value.trim(),
+          profileImage: '',
+          skills: document.getElementById('skills').value.trim(),
+          hobbies: document.getElementById('hobbies').value.trim(),
+          education: {
+            degree: document.getElementById('degree').value.trim(),
+            collegeName: document.getElementById('collegeName').value.trim(),
+            collegeCity: document.getElementById('collegeCity').value.trim(),
+            year: document.getElementById('year').value.trim(),
+            marks: document.getElementById('marks').value.trim(),
+          },
+          projects: [],
+          achievements: [],
+          experience: []
+        };
+  
+        // Collect Projects data
+        document.querySelectorAll('#projectSection .projectEntry').forEach(entry => {
+          const inputs = entry.querySelectorAll('input');
+          const textarea = entry.querySelector('textarea');
+          const projectName = inputs[0].value.trim();
+          const projectLink = inputs[1].value.trim();
+          const projectDesc = textarea.value.trim();
+          if (projectName || projectLink || projectDesc) {
+            formData.projects.push({ projectName, projectLink, projectDesc });
+          }
+        });
+  
+        // Collect Achievements data
+        document.querySelectorAll('#achievementSection .achievementEntry').forEach(entry => {
+          const title = entry.querySelector('input').value.trim();
+          const desc = entry.querySelector('textarea').value.trim();
+          if (title || desc) {
+            formData.achievements.push({ achievementTitle: title, achievementDesc: desc });
+          }
+        });
+  
+        // Collect Experience data
+        document.querySelectorAll('#experienceSection .experienceEntry').forEach(entry => {
+          const inputs = entry.querySelectorAll('input');
+          const textarea = entry.querySelector('textarea');
+          const jobTitle = inputs[0].value.trim();
+          const companyName = inputs[1].value.trim();
+          const location = inputs[2].value.trim();
+          const duration = inputs[3].value.trim();
+          const responsibilities = textarea.value.trim();
+          if (jobTitle || companyName || location || duration || responsibilities) {
+            formData.experience.push({ jobTitle, companyName, location, duration, responsibilities });
+          }
+        });
+  
+        // Handle Profile Image
+        const profileImageInput = document.getElementById('profileImage');
+        if (profileImageInput.files.length > 0) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            formData.profileImage = reader.result;
+            saveData(formData);
+          };
+          reader.onerror = function (error) {
+            alert("Error loading image: " + error);
+          };
+          reader.readAsDataURL(profileImageInput.files[0]);
+        } else {
+          saveData(formData);
+        }
+  
+        // Save the data to localStorage
+        function saveData(data) {
+          try {
+            localStorage.setItem('resumeData', JSON.stringify(data));
+            alert('Resume data saved!');
+            window.location.href = "/pages/template1.html";
+          } catch (error) {
+            alert('Error saving data: ' + error);
+          }
+        }
+      });
+  
+      // Project, Achievement, and Experience entry add buttons
+      ['addProject', 'addAchievement', 'addExperience'].forEach(id => {
+        document.getElementById(id).addEventListener('click', () => {
+          const section = document.getElementById(id.replace('add', '').toLowerCase() + 'Section');
+          const entries = section.querySelectorAll(`.${id.replace('add', '').toLowerCase()}Entry`);
+          const last = entries[entries.length - 1];
+          const inputs = last.querySelectorAll('input, textarea');
+          let valid = true;
+  
+          inputs.forEach(input => {
+            if (input.required && input.value.trim() === '') {
+              valid = false;
+              input.style.borderColor = 'red';
+            } else {
+              input.style.borderColor = '';
+            }
+          });
+  
+          if (!valid) {
+            alert(`Please fill current ${id.replace('add', '').toLowerCase()} before adding new.`);
+            return;
+          }
+  
+          const clone = last.cloneNode(true);
+          clone.querySelectorAll('input, textarea').forEach(input => {
+            input.value = '';
+            input.style.borderColor = '';
+          });
+          section.appendChild(clone);
+        });
+      });
+    });
   </script>
   
 </body>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume Builder</title>
-  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/styles.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-
+  <!-- Navbar Section -->
   <nav>
     <div class="logo">
-      <a href="/main.html"><i class="fas fa-star"></i> MyLogo</a>
+      <a href="/main.html"><i class="fas fa-star"></i> Resume Builder</a>
     </div>
     <ul class="nav-links">
       <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
@@ -27,51 +27,31 @@
       <div></div>
     </div>
   </nav>
-  
 
+  <!-- Main Content Section -->
   <main class="main-content">
     <div class="container">
-      <h1>Digital Resume Builder</h1>
-      <p>Create your professional resume in minutes.</p>
-      <a href="/pages/main2.html" class="btn2">Start Building</a>
+      <h1>Who Are You?</h1>
+      <p>Select an option below to proceed:</p>
+      <div class="btn-group">
+        <a href="/pages/builder.html" class="btn2"><i class="fas fa-graduation-cap"></i> Student</a>
+        <a href="/pages/builderemp.html" class="btn2"><i class="fas fa-briefcase"></i> Employee</a>
+      </div>
     </div>
   </main>
 
+  <!-- Footer Section -->
   <footer>
     <div class="footer-container">
       <p>&copy; 2025 SRKR Engineering College | 
-        <a href="https://srkrec.edu.in/#" target="_blank">
-          CSIT Department
-        </a>
+        <a href="https://srkrec.edu.in/#" target="_blank">CSIT Department</a>
       </p>
-            <ul class="footer-links">
+      <ul class="footer-links">
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Help</a></li>
       </ul>
     </div>
   </footer>
-
-  <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-  
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  
-    // Highlight active link
-    const currentPage = window.location.pathname;
-    const links = document.querySelectorAll(".nav-links a");
-  
-    links.forEach(link => {
-      const linkPath = new URL(link.href).pathname;
-      if (linkPath === currentPage) {
-        link.classList.add("active");
-      }
-    });
-  </script>
-  
-
 </body>
 </html>
