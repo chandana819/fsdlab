@@ -6,11 +6,7 @@
   
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-<<<<<<< HEAD
-    background-image: url(/assets/leadspace_article.jpg);
-=======
     background-image: url('/assets/leadspace_article.jpg');
->>>>>>> 606151cc39d7a97e0aafc081ea05cc1dca9405e1
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -65,9 +61,7 @@
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   }
   
-  .signup-btn {
-    background-color: red;
-  }
+  
   .hamburger {
     display: none;
     flex-direction: column;
@@ -80,6 +74,49 @@
     width: 25px;
     margin: 4px;
     transition: all 0.3s ease;
+  }
+  
+  .nav-links i {
+    color: #FFD700; 
+    font-size: 20px; 
+    margin-right: 8px;
+    transition: color 0.3s ease;
+  }
+  
+  
+  .nav-links a:hover i {
+    color: #0a046e; 
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      height: auto;
+    }
+  
+    .nav-links {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: #181a1e;
+      flex-direction: column;
+      width: 200px;
+      padding: 20px;
+      display: none;
+      border-radius: 0 0 12px 12px;
+    }
+    .nav-links:hover {
+      background-color: #ccc;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
   }
   
 
@@ -166,3 +203,38 @@ input[type="password"]:hover {
   border-color: #07ec5b;
   background-color: #f0f8ff;
 }
+
+@media (max-width: 768px) {
+  table {
+    width: 90%;
+    margin: 10% auto 0 auto;
+    font-size: 16px;
+  }
+
+  h1 {
+    margin-top: 50%;
+    font-size: 24px;
+  }
+
+  input[type="submit"],
+  .login-link input[type="button"] {
+    width: 80%;
+    padding: 10px;
+  }
+
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  td a {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+

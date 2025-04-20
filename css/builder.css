@@ -41,7 +41,7 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
   padding: 8px 16px;
   border-radius: 20px;
@@ -51,8 +51,10 @@ nav {
 
 .nav-links a:hover {
   background-color: #ffffff;
-  color: #0a046e;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  color: #1f1f1f;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
 .hamburger {
@@ -65,11 +67,53 @@ nav {
   background-color: white;
   height: 3px;
   width: 25px;
-  margin: 4px;
-  transition: all 0.3s ease;
+  margin: 4px 0;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 
+.nav-links i {
+  color: #FFD700; 
+  font-size: 20px; 
+  margin-right: 8px;
+  transition: color 0.3s ease;
+}
+
+
+.nav-links a:hover i {
+  color: #0a046e; 
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #181a1e;
+    flex-direction: column;
+    width: 150px;
+    padding: 20px;
+    display: none;
+    border-radius: 0 0 12px 12px;
+  }
+  .nav-links:hover {
+    background-color: #ccc;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
 .container1 {
   max-width: 900px;
   margin: 40px auto;
@@ -233,7 +277,7 @@ button:focus {
     font-size: 16px;
   }
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .nav-links {
     display: none;
     position: absolute;
@@ -253,4 +297,4 @@ button:focus {
   .hamburger {
     display: flex;
   }
-}
+} */

@@ -120,8 +120,24 @@
     </form>
   </div>
 
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 SRKR Engineering College | 
+        <a href="https://srkrec.edu.in/#" target="_blank">
+          CSIT Department
+        </a>
+      </p>
+  </footer>
+
   <!-- JavaScript -->
   <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+  
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('resumeForm');
   

@@ -209,13 +209,14 @@ footer p a:hover {
 @media (max-width: 768px) {
   .main-content {
     width: 80%;
-    margin-top: 30%;
+    margin-top: 20%; 
   }
 }
 
 @media (max-width: 1024px) {
-  .main-content{
-    margin-top: 40%;
+  .main-content {
+    margin-top: 25%;
   }
 }
+
 
