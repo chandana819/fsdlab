@@ -97,6 +97,9 @@ nav {
 .nav-links a:hover i {
   color: #0a046e; 
 }
+.nav-links a i.fas.fa-envelope {
+  color: #0a046e; 
+}
 
 @media (max-width: 768px) {
   nav {

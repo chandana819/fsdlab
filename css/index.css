@@ -100,11 +100,14 @@ nav {
 .nav-links a:hover i {
   color: #0a046e; 
 }
+.nav-links a i.fas.fa-home {
+  color: #0a046e;
+}
 
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 80px;
+    top: 100px;
     right: 0;
     background-color: #0a046e;
     flex-direction: column;

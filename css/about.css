@@ -99,6 +99,9 @@
   .nav-links a:hover i {
     color: #0a046e; 
   }
+  .nav-links a i.fas.fa-info-circle {
+    color: #0a046e; 
+}
   
   @media (max-width: 768px) {
     nav {
