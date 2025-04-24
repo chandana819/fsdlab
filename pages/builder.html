@@ -114,6 +114,23 @@
         </div>
         <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
       </div>
+        <!-- Languages Section -->
+         <div class="section">
+          <h3>Languages</h3>
+          <div id="languageSection">
+            <div class="grid-2 languageEntry">
+              <input type="text" name="language" placeholder="Language (e.g., English)" required />
+              <select name="proficiency" required>
+                <option value="">Select Proficiency</option>
+                <option value="Basic">Basic</option>
+                <option value="Conversational">Conversational</option>
+                <option value="Fluent">Fluent</option>
+                <option value="Native">Native</option>
+             </select>
+            </div>
+          </div>
+          <button type="button" id="addLanguage" class="btn2">Add Language</button>
+        </div>
 
       <!-- Hobbies Section -->
       <div class="section">
@@ -174,6 +191,7 @@
       degreeCgpa: document.getElementById('degreeCgpa').value.trim(),
       skills: document.getElementById('skills').value.trim(),
       projects: [],
+      languageSection:[],
       achievements: [],
       hobbies: document.getElementById('hobbies').value.trim()
     };
@@ -192,6 +210,21 @@
         formData.projects.push({ projectName, projectLink, projectDesc });
       }
     });
+    // Gather all Languages
+formData.languages = [];
+document.querySelectorAll('#languageSection .languageEntry').forEach(function (entry) {
+  const languageInput = entry.querySelector('input[name="language"]');
+  const proficiencySelect = entry.querySelector('select[name="proficiency"]');
+
+  const language = languageInput ? languageInput.value.trim() : "";
+  const proficiency = proficiencySelect ? proficiencySelect.value.trim() : "";
+
+  // Add to array only if both fields are filled
+  if (language && proficiency) {
+    formData.languages.push({ language, proficiency });
+  }
+});
+
 
     // Gather all Achievements
     document.querySelectorAll('#achievementSection .achievementEntry').forEach(function (entry) {
@@ -297,6 +330,43 @@
 
     achievementSection.appendChild(newEntry);
   });
+  // Add Language Functionality
+const addLanguageBtn = document.getElementById('addLanguage');
+
+addLanguageBtn.addEventListener('click', function () {
+  const languageSection = document.getElementById('languageSection');
+  const allEntries = languageSection.querySelectorAll('.languageEntry');
+  const lastEntry = allEntries[allEntries.length - 1]; // Get the last language entry
+
+  // Validate that both input and select are filled
+  const inputs = lastEntry.querySelectorAll('input, select');
+  let isFilled = true;
+
+  inputs.forEach(function (input) {
+    if (input.value.trim() === '') {
+      isFilled = false;
+      input.style.borderColor = 'red'; // Highlight invalid field
+    } else {
+      input.style.borderColor = ''; // Reset style
+    }
+  });
+
+  if (!isFilled) {
+    alert('Please fill out the current language entry before adding a new one.');
+    return;
+  }
+
+  // Clone and reset
+  const newEntry = lastEntry.cloneNode(true);
+  newEntry.querySelectorAll('input, select').forEach(function (input) {
+    input.value = '';
+    input.style.borderColor = '';
+    input.removeAttribute('id'); // Optional, prevents ID conflicts
+  });
+
+  languageSection.appendChild(newEntry);
+});
+
 });
 
   </script>

@@ -100,7 +100,39 @@ nav {
 .nav-links a i.fas.fa-envelope {
   color: #0a046e; 
 }
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
 
+.social-icons a {
+  color: #333;
+  font-size: 22px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+.social-icons a i {
+  transition: color 0.3s ease;
+}
+
+.social-icons a i.fas.fa-envelope {
+  color: #e74c3c; /* Change to a custom color */
+}
+
+.social-icons a i.fab.fa-github {
+  color: #333;
+}
+
+.social-icons a i.fab.fa-linkedin {
+  color: #0077b5;
+}
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
