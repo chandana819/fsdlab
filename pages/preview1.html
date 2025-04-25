@@ -48,6 +48,14 @@
     `).join('')
     : '<p>No achievements available.</p>';
 
+      // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
   // Render education dynamically
   const educationItems = `
     <div class="education-grid">
@@ -207,6 +215,13 @@
       </div>
       <hr/>
 
+       <!-- Languages Section -->
+      <div class="languages">
+        <h3 class="section-title">Languages</h3>
+        ${languagesItems}
+      </div>
+      <hr/>
+
       <!-- Work Experience Section -->
       <div class="experience">
         <h3 class="section-title">Experience</h3>
@@ -238,6 +253,8 @@
   const hobbiesItems = data.hobbies
     ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
     : '<li>No hobbies available</li>';
+
+
 
   // Render projects dynamically
   const projectsItems = data.projects && data.projects.length > 0
@@ -279,6 +296,14 @@
       </div>
     `).join('')
     : '<p>No work experience available.</p>';
+
+    // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
 
   return `
     <style>
@@ -417,6 +442,15 @@
       </div>
       <hr/>
 
+<!-- Languages Section -->
+      <div class="languages">
+        <h3 class="section-title">Languages</h3>
+        ${languagesItems}
+      </div>
+      <hr/>
+
+
+
       <!-- Work Experience Section -->
       <div class="experience">
         <h3 class="section-title">Experience</h3>
@@ -464,6 +498,15 @@ function renderTemplate3(data) {
     `).join('')
     : '<p>No achievements available.</p>';
 
+    // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
+
   // Render education dynamically
   const educationItems = `
     <div class="education-section">
@@ -504,7 +547,7 @@ function renderTemplate3(data) {
         gap: 20px;
       }
       .sidebar {
-        background-color: #264653;
+        background-color: #84e2ea;
         color: #fff;
         padding: 20px;
         text-align: center;
@@ -515,12 +558,14 @@ function renderTemplate3(data) {
         width: 120px;
         height: 120px;
         border-radius: 50%;
+        border: solid orange 3px;
         margin-bottom: 15px;
       }
       .sidebar h2 {
         margin-bottom: 10px;
         font-size: 24px;
         font-weight: bold;
+        color: red;
       }
       .sidebar p {
         font-size: 16px;
@@ -628,6 +673,12 @@ function renderTemplate3(data) {
             ${achievementsItems}
           </div>
 
+          <!-- Languages Section -->
+           <div class="section">
+            <h3 class="section-title">Languages</h3>
+            ${languagesItems}
+          </div>
+
           <!-- Hobbies Section -->
           <div class="section">
             <h3>Hobbies</h3>
@@ -671,6 +722,15 @@ function renderTemplate3(data) {
       ${achievement.achievementDesc || "No description available."}</p>
     `).join('')
     : '<p>No achievements available.</p>';
+
+    // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
 
   // Render education dynamically
   const educationItems = `
@@ -721,6 +781,7 @@ function renderTemplate3(data) {
         text-align: center;
         margin-bottom: 30px;
         width: 100%;
+        background: #d4acb6;
       }
       .header img {
         width: 120px;
@@ -733,7 +794,7 @@ function renderTemplate3(data) {
         font-size: 36px;
         font-weight: bold;
         margin: 5px 0;
-        color: #222;
+        color: green;
       }
       .header h4 {
         font-size: 22px;
@@ -839,6 +900,13 @@ function renderTemplate3(data) {
       </div>
       <hr/>
 
+      <!-- Languages Section -->
+      <div class="languages">
+        <h3 class="section-title">Languages</h3>
+        ${languagesItems}
+      </div>
+      <hr/>
+
       <!-- Work Experience Section -->
       <div class="experience">
         <h3 class="section-title">Experience</h3>
@@ -891,6 +959,15 @@ function renderTemplate3(data) {
       </div>
     `).join('')
     : '<p>No achievements available.</p>';
+
+    // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
 
   // Render education dynamically
   const educationItems = `
@@ -1066,6 +1143,12 @@ function renderTemplate3(data) {
         <div class="section-content">${achievementsItems}</div>
       </div>
 
+      <!-- Languages Section -->
+      <div class="section languages">
+        <div class="section-title">Languages</div>
+        <div class="section-content">${languagesItems}</div>
+      </div>
+
       <!-- Work Experience Section -->
       <div class="section experience">
         <div class="section-title">Experience</div>
@@ -1110,6 +1193,15 @@ function renderTemplate6(data) {
       </div>
     `).join('')
     : '<p>No achievements available.</p>';
+
+    // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
     // Render education dynamically
   const educationItems = `
     <div class="education-item">
@@ -1137,20 +1229,20 @@ function renderTemplate6(data) {
         margin: 0;
         padding: 0;
         font-family: "Roboto", sans-serif;
-        background: #121212;
+        background: #fff;
         color: #f4f4f4;
       }
       .resume {
         max-width: 800px;
         margin: 40px auto;
-        background: #1e1e1e;
+        background-color: #04656e;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         padding: 20px;
       }
       .header {
         text-align: center;
-        background: #333;
+        background: rgba(255, 255, 255, 0.8);
         padding: 20px;
         border-bottom: 3px solid #444;
         border-radius: 10px 10px 0 0;
@@ -1159,18 +1251,18 @@ function renderTemplate6(data) {
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        border: 2px solid #666;
+        border: 3px solid #e7eaa1;
         margin-bottom: 10px;
       }
       .header h2 {
         font-size: 26px;
         margin: 10px 0;
-        color: #f4f4f4;
+        color: #333;
       }
       .header p {
         font-size: 16px;
         margin: 5px 0;
-        color: #bbbbbb;
+        color: #222;
       }
       .section {
         margin: 20px 0;
@@ -1187,7 +1279,8 @@ function renderTemplate6(data) {
         padding-left: 20px;
       }
       .project, .achievement, .experience {
-        background: #222;
+        background: rgba(255, 255, 255, 0.9);
+        color: black;
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 10px;
@@ -1259,6 +1352,12 @@ function renderTemplate6(data) {
         <h3>Achievements</h3>
         ${achievementsItems}
       </div>
+
+      <div class="section">
+        <h3>Languages</h3>
+        ${languagesItems}
+      </div>
+      <hr/>
 
       <div class="section">
         <h3>Hobbies</h3>

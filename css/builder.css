@@ -164,7 +164,8 @@ input[type="email"],
 input[type="date"],
 input[type="file"],
 input[type="url"],
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -179,7 +180,8 @@ input[type="email"]:focus,
 input[type="date"]:focus,
 input[type="file"]:focus,
 input[type="url"]:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border-color: var(--secondary-color);
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
   outline: none;

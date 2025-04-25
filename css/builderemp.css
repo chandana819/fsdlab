@@ -178,7 +178,8 @@
   input[type="tel"],
   input[type="number"],
   input[type="url"],
-  textarea {
+  textarea,
+  select {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -195,7 +196,8 @@
   input[type="tel"]:focus,
   input[type="number"]:focus,
   input[type="url"]:focus,
-  textarea:focus {
+  textarea:focus,
+  select:focus {
     border-color: var(--secondary-color);
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;

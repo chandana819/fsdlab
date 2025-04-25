@@ -109,6 +109,23 @@
         <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
       </div>
 
+      <div class="section">
+        <h3>Languages</h3>
+        <div id="languageSection">
+          <div class="grid-2 languageEntry">
+            <input type="text" id="language" placeholder="Language (e.g., English)" required />
+            <select name="proficiency" required>
+              <option value="">Select Proficiency</option>
+              <option value="Basic">Basic</option>
+              <option value="Conversational">Conversational</option>
+              <option value="Fluent">Fluent</option>
+              <option value="Native">Native</option>
+           </select>
+          </div>
+        </div>
+        <button type="button" id="addLanguage" class="btn2">Add Language</button>
+      </div>
+
       <!-- Hobbies -->
       <div class="section">
         <h3>Hobbies</h3>
@@ -166,6 +183,7 @@
           },
           projects: [],
           achievements: [],
+          languageSection:[],
           experience: []
         };
   
@@ -203,6 +221,20 @@
             formData.experience.push({ jobTitle, companyName, location, duration, responsibilities });
           }
         });
+        formData.languages = [];
+document.querySelectorAll('#languageSection .languageEntry').forEach(function (entry) {
+  const languageInput = entry.querySelector('input[name="language"]');
+  const proficiencySelect = entry.querySelector('select[name="proficiency"]');
+
+  const language = languageInput ? languageInput.value.trim() : "";
+  const proficiency = proficiencySelect ? proficiencySelect.value.trim() : "";
+
+  // Add to array only if both fields are filled
+  if (language && proficiency) {
+    formData.languages.push({ language, proficiency });
+  }
+});
+
   
         // Handle Profile Image
         const profileImageInput = document.getElementById('profileImage');
@@ -262,6 +294,20 @@
           });
           section.appendChild(clone);
         });
+        if (!isFilled) {
+    alert('Please fill out the current language entry before adding a new one.');
+    return;
+  }
+
+  // Clone and reset
+  const newEntry = lastEntry.cloneNode(true);
+  newEntry.querySelectorAll('input, select').forEach(function (input) {
+    input.value = '';
+    input.style.borderColor = '';
+    input.removeAttribute('id'); // Optional, prevents ID conflicts
+  });
+
+  languageSection.appendChild(newEntry);
       });
     });
   </script>
