@@ -38,7 +38,9 @@
     font-weight: bold;
     text-decoration: none;
   }
-  
+  .logo i{
+    color: #FFD700;
+  }
   .nav-links {
     display: flex;
     gap: 20px;
