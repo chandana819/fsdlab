@@ -1,61 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resume Preview</title>
-  <link rel="stylesheet" href="/css/preview.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Preview</title>
+    <link rel="stylesheet" href="/css/preview.css" />
 </head>
+
 <body>
-  
-  <div class="container2">
-    <h2>Resume Preview</h2>
-    <div id="resumeOutput"></div>
-    <button onclick="window.print()">Download PDF</button>
-  </div>
 
-  <script>
-    // Retrieve resume data and selected template from localStorage
-    const data = JSON.parse(localStorage.getItem("resumeData"));
-    const selectedTemplate = localStorage.getItem("selectedTemplate");
+    <div class="container2">
+        <h2>Resume Preview</h2>
+        <div id="resumeOutput"></div>
+        <button onclick="window.print()">Download PDF</button>
+    </div>
 
-    function renderTemplate1(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+    <script>
+        // Retrieve resume data and selected template from localStorage
+        const data = JSON.parse(localStorage.getItem("resumeData"));
+        const selectedTemplate = localStorage.getItem("selectedTemplate");
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+        function renderTemplate1(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
+
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
         <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
         <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
         <p>${project.projectDesc || "No description available."}</p>
-      `).join('')
-    : '<p>No projects available.</p>';
+      `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
         <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
         ${achievement.achievementDesc || "No description available."}</p>
-      `).join('')
-    : '<p>No achievements available.</p>';
+      `).join('') :
+                '<p>No achievements available.</p>';
 
-  // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -237,34 +239,34 @@
       </div>
     </div>
   `;
-}
+        }
 
 
-function renderTemplate2(data) {
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+        function renderTemplate2(data) {
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
 
-  const projectsItems = data.projects?.length
-    ? data.projects.map(project => `
+            const projectsItems = data.projects?.length ?
+                data.projects.map(project => `
         <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
         <a href="${project.projectLink || "#"}" target="_blank">View</a><br>
-        ${project.projectDesc || "No description."}</p>`).join('')
-    : '<p>No projects available.</p>';
+        ${project.projectDesc || "No description."}</p>`).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements?.length
-    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
-    : '<p>No achievements available.</p>';
+            const achievementsItems = data.achievements?.length ?
+                data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('') :
+                '<p>No achievements available.</p>';
 
-  const languagesItems = data.languages?.length
-    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
-    : '<p>No languages listed.</p>';
+            const languagesItems = data.languages?.length ?
+                data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body { margin:0; font-family:sans-serif; background:#eaeaea; }
       h1.heading { text-align:center; margin-top:30px; font-size:32px; color:#333; }
@@ -335,30 +337,30 @@ function renderTemplate2(data) {
       </div>
     </div>
   `;
-}
+        }
 
-function renderTemplate3(data) {
-  const skillsItems = data.skills
-    ? `<p>${data.skills.split(',').join(', ')}</p>`
-    : '<p>No skills available</p>';
+        function renderTemplate3(data) {
+            const skillsItems = data.skills ?
+                `<p>${data.skills.split(',').join(', ')}</p>` :
+                '<p>No skills available</p>';
 
-  const hobbiesItems = data.hobbies
-    ? `<p>${data.hobbies.split(',').join(', ')}</p>`
-    : '<p>No hobbies available</p>';
+            const hobbiesItems = data.hobbies ?
+                `<p>${data.hobbies.split(',').join(', ')}</p>` :
+                '<p>No hobbies available</p>';
 
-  const projectsItems = data.projects?.length
-    ? data.projects.map(p => `<p><strong>${p.projectName}</strong> (${p.projectLink})<br>${p.projectDesc}</p>`).join('')
-    : '<p>No projects available.</p>';
+            const projectsItems = data.projects?.length ?
+                data.projects.map(p => `<p><strong>${p.projectName}</strong> (${p.projectLink})<br>${p.projectDesc}</p>`).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements?.length
-    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
-    : '<p>No achievements available.</p>';
+            const achievementsItems = data.achievements?.length ?
+                data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('') :
+                '<p>No achievements available.</p>';
 
-  const languagesItems = data.languages?.length
-    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
-    : '<p>No languages listed.</p>';
+            const languagesItems = data.languages?.length ?
+                data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body { margin:0; font-family:Georgia, serif; background:#fafafa; color:#333; }
       .resume { max-width:700px; margin:30px auto; padding:20px; background:#fff; box-shadow:0 0 8px rgba(0,0,0,0.05); }
@@ -386,31 +388,31 @@ function renderTemplate3(data) {
       <h2>Hobbies</h2>${hobbiesItems}
     </div>
   `;
-}
+        }
 
 
-function renderTemplate4(data) {
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+        function renderTemplate4(data) {
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
 
-  const projectsItems = data.projects?.length
-    ? data.projects.map(p => `<div><h4>${p.projectName}</h4><p>${p.projectDesc}<br><a href="${p.projectLink}">View</a></p></div>`).join('')
-    : '<p>No projects available.</p>';
+            const projectsItems = data.projects?.length ?
+                data.projects.map(p => `<div><h4>${p.projectName}</h4><p>${p.projectDesc}<br><a href="${p.projectLink}">View</a></p></div>`).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements?.length
-    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
-    : '<p>No achievements available.</p>';
+            const achievementsItems = data.achievements?.length ?
+                data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('') :
+                '<p>No achievements available.</p>';
 
-  const languagesItems = data.languages?.length
-    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
-    : '<p>No languages listed.</p>';
+            const languagesItems = data.languages?.length ?
+                data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body { margin:0; font-family:Verdana; background:#f0f0f0; }
       .resume { max-width:900px; margin:40px auto; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1); }
@@ -455,32 +457,32 @@ function renderTemplate4(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
 
-function renderTemplate5(data) {
-  const skillsItems = data.skills
-    ? `<ul>${data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')}</ul>`
-    : '<p>No skills available</p>';
+        function renderTemplate5(data) {
+            const skillsItems = data.skills ?
+                `<ul>${data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')}</ul>` :
+                '<p>No skills available</p>';
 
-  const hobbiesItems = data.hobbies
-    ? `<ul>${data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')}</ul>`
-    : '<p>No hobbies available</p>';
+            const hobbiesItems = data.hobbies ?
+                `<ul>${data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')}</ul>` :
+                '<p>No hobbies available</p>';
 
-  const projectsItems = data.projects?.length
-    ? data.projects.map(p => `<p><strong>${p.projectName}</strong>: ${p.projectDesc} [<a href="${p.projectLink}">View</a>]</p>`).join('')
-    : '<p>No projects available.</p>';
+            const projectsItems = data.projects?.length ?
+                data.projects.map(p => `<p><strong>${p.projectName}</strong>: ${p.projectDesc} [<a href="${p.projectLink}">View</a>]</p>`).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements?.length
-    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
-    : '<p>No achievements available.</p>';
+            const achievementsItems = data.achievements?.length ?
+                data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('') :
+                '<p>No achievements available.</p>';
 
-  const languagesItems = data.languages?.length
-    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
-    : '<p>No languages listed.</p>';
+            const languagesItems = data.languages?.length ?
+                data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body { margin:0; font-family:"Segoe UI"; background:#f9f9f9; }
       .resume { max-width:950px; margin:30px auto; background:#fff; display:grid; grid-template-columns:1fr 2fr; box-shadow:0 0 8px rgba(0,0,0,0.1); }
@@ -518,36 +520,36 @@ function renderTemplate5(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
-function renderTemplate6(data) {
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<p>No skills available</p>';
+        function renderTemplate6(data) {
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<p>No skills available</p>';
 
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<p>No hobbies available</p>';
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<p>No hobbies available</p>';
 
-  const projectsItems = data.projects?.length
-    ? data.projects.map(p => `
+            const projectsItems = data.projects?.length ?
+                data.projects.map(p => `
       <div class="timeline-item">
         <h4>${p.projectName}</h4>
         <p>${p.projectDesc}</p>
         <a href="${p.projectLink}" target="_blank">View Project</a>
-      </div>`).join('')
-    : '<p>No projects available.</p>';
+      </div>`).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements?.length
-    ? data.achievements.map(a => `<div class="timeline-item"><h4>${a.achievementTitle}</h4><p>${a.achievementDesc}</p></div>`).join('')
-    : '<p>No achievements available.</p>';
+            const achievementsItems = data.achievements?.length ?
+                data.achievements.map(a => `<div class="timeline-item"><h4>${a.achievementTitle}</h4><p>${a.achievementDesc}</p></div>`).join('') :
+                '<p>No achievements available.</p>';
 
-  const languagesItems = data.languages?.length
-    ? `<ul>${data.languages.map(l => `<li>${l.language} (${l.proficiency})</li>`).join('')}</ul>`
-    : '<p>No languages listed.</p>';
+            const languagesItems = data.languages?.length ?
+                `<ul>${data.languages.map(l => `<li>${l.language} (${l.proficiency})</li>`).join('')}</ul>` :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body { margin:0; font-family:'Helvetica Neue', sans-serif; background:#f5f5f5; color:#333; }
       .resume { max-width:900px; margin:30px auto; background:#fff; padding:20px; box-shadow:0 0 8px rgba(0,0,0,0.1); border-radius:8px; }
@@ -614,35 +616,36 @@ function renderTemplate6(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
-    // Render the chosen template based on "selectedTemplate" value.
-    if (data) {
-      const output = document.getElementById("resumeOutput");
-      switch (selectedTemplate) {
-        case "template1":
-          output.innerHTML = renderTemplate1(data);
-          break;
-        case "template2":
-          output.innerHTML = renderTemplate2(data);
-          break;
-        case "template3":
-          output.innerHTML = renderTemplate3(data);
-          break;
-        case "template4":
-          output.innerHTML = renderTemplate4(data);
-          break;
-        case "template5":
-          output.innerHTML = renderTemplate5(data);
-          break;
-        case "template6":
-          output.innerHTML = renderTemplate6(data);
-          break;
-        default:
-          output.innerHTML = renderTemplate1(data);
-      }
-    }
-  </script>
+        // Render the chosen template based on "selectedTemplate" value.
+        if (data) {
+            const output = document.getElementById("resumeOutput");
+            switch (selectedTemplate) {
+                case "template1":
+                    output.innerHTML = renderTemplate1(data);
+                    break;
+                case "template2":
+                    output.innerHTML = renderTemplate2(data);
+                    break;
+                case "template3":
+                    output.innerHTML = renderTemplate3(data);
+                    break;
+                case "template4":
+                    output.innerHTML = renderTemplate4(data);
+                    break;
+                case "template5":
+                    output.innerHTML = renderTemplate5(data);
+                    break;
+                case "template6":
+                    output.innerHTML = renderTemplate6(data);
+                    break;
+                default:
+                    output.innerHTML = renderTemplate1(data);
+            }
+        }
+    </script>
 </body>
+
 </html>

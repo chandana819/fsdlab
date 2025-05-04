@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resume Preview</title>
-  <link rel="stylesheet" href="/css/preview.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Preview</title>
+    <link rel="stylesheet" href="/css/preview.css" />
 </head>
+
 <body>
-  
-  <div class="container2">
-    <h2>Resume Preview</h2>
-    <div id="resumeOutput"></div>
-    <button onclick="window.print()">Download PDF</button>
-  </div>
 
-  <script>
-    // Retrieve resume data and selected template from localStorage
-    const data = JSON.parse(localStorage.getItem("resumeData"));
-    const selectedTemplate = localStorage.getItem("selectedTemplate");
+    <div class="container2">
+        <h2>Resume Preview</h2>
+        <div id="resumeOutput"></div>
+        <button onclick="window.print()">Download PDF</button>
+    </div>
 
-    // Template 1 - Simple and Clean
-    function renderTemplate1(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+    <script>
+        // Retrieve resume data and selected template from localStorage
+        const data = JSON.parse(localStorage.getItem("resumeData"));
+        const selectedTemplate = localStorage.getItem("selectedTemplate");
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+        // Template 1 - Simple and Clean
+        function renderTemplate1(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
+
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
       <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
       <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
       <p>${project.projectDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
       <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
       ${achievement.achievementDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-      // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
-  // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-grid">
       <div class="education-degree">
         <h4>Degree</h4>
@@ -70,9 +72,9 @@
     </div>
   `;
 
-  // Render work experience dynamically
-  const experienceItems = data.experience && data.experience.length > 0
-    ? data.experience.map(exp => `
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
       <div class="experience-entry">
         <h4>${exp.jobTitle || "Job Title"}</h4>
         <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
@@ -80,10 +82,10 @@
         <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
         <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No work experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -238,43 +240,43 @@
       </div>
     </div>
   `;
-}
+        }
 
 
 
-   // Template 2 - Bold and Modern
-   function renderTemplate2(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+        // Template 2 - Bold and Modern
+        function renderTemplate2(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
 
 
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
       <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
       <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
       <p>${project.projectDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
       <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
       ${achievement.achievementDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-  // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-section">
       <p><strong>Degree:</strong> ${data.education.degree || "Not provided"}</p>
       <p><strong>College:</strong> ${data.education.collegeName || "Not provided"}</p>
@@ -284,9 +286,9 @@
     </div>
   `;
 
-  // Render work experience dynamically
-  const experienceItems = data.experience && data.experience.length > 0
-    ? data.experience.map(exp => `
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
       <div class="experience-entry">
         <h4>${exp.jobTitle || "Job Title"}</h4>
         <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
@@ -294,18 +296,18 @@
         <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
         <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No work experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-    // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -467,48 +469,48 @@
       </div>
     </div>
   `;
-}
+        }
 
 
-function renderTemplate3(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '';
+        function renderTemplate3(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '';
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '';
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '';
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
       <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
       <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
       <p>${project.projectDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
       <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
       ${achievement.achievementDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-    // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
 
-  // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-section">
       <p><strong>Degree:</strong> ${data.education.degree || "Not provided"}</p>
       <p><strong>College:</strong> ${data.education.collegeName || "Not provided"}</p>
@@ -518,9 +520,9 @@ function renderTemplate3(data) {
     </div>
   `;
 
-  // Render work experience dynamically
-  const experienceItems = data.experience && data.experience.length > 0
-    ? data.experience.map(exp => `
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
       <div class="experience-entry">
         <h4>${exp.jobTitle || "Job Title"}</h4>
         <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
@@ -528,10 +530,10 @@ function renderTemplate3(data) {
         <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
         <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No work experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-  return `
+            return `
     <style>
       .resume {
         max-width: 900px;
@@ -690,50 +692,50 @@ function renderTemplate3(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
 
- // Template 4 - Border-Left Emphasis with Centered Header
- function renderTemplate4(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+        // Template 4 - Border-Left Emphasis with Centered Header
+        function renderTemplate4(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
       <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
       <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
       <p>${project.projectDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
       <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
       ${achievement.achievementDesc || "No description available."}</p>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-    // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
 
-  // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-section">
       <p><strong>Degree:</strong> ${data.education.degree || "Not provided"}</p>
       <p><strong>College:</strong> ${data.education.collegeName || "Not provided"}</p>
@@ -743,9 +745,9 @@ function renderTemplate3(data) {
     </div>
   `;
 
-  // Render work experience dynamically
-  const experienceItems = data.experience && data.experience.length > 0
-    ? data.experience.map(exp => `
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
       <div class="experience-entry">
         <h4>${exp.jobTitle || "Job Title"}</h4>
         <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
@@ -753,10 +755,10 @@ function renderTemplate3(data) {
         <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
         <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No work experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -923,54 +925,54 @@ function renderTemplate3(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
 
-   // Template 5 - Compact Card-Style Layout
-   function renderTemplate5(data) {
-  // Convert comma-separated skills into an unordered list of bullet items
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '<li>No skills available</li>';
+        // Template 5 - Compact Card-Style Layout
+        function renderTemplate5(data) {
+            // Convert comma-separated skills into an unordered list of bullet items
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '<li>No skills available</li>';
 
-  // Convert comma-separated hobbies into an unordered list of bullet items
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '<li>No hobbies available</li>';
+            // Convert comma-separated hobbies into an unordered list of bullet items
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '<li>No hobbies available</li>';
 
-  // Render projects dynamically
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => ` 
+            // Render projects dynamically
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => ` 
       <div class="project-item">
         <h5>${project.projectName || "Unnamed Project"}</h5>
         <a href="${project.projectLink || "#"}" target="_blank">View Project</a>
         <p>${project.projectDesc || "No description available."}</p>
       </div>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  // Render achievements dynamically
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => ` 
+            // Render achievements dynamically
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => ` 
       <div class="achievement-item">
         <h5>${achievement.achievementTitle || "Untitled Achievement"}</h5>
         <p>${achievement.achievementDesc || "No description available."}</p>
       </div>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-    // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
 
-  // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-item">
       <p><strong>Degree:</strong> ${data.education.degree || "Not provided"}</p>
       <p><strong>College:</strong> ${data.education.collegeName || "Not provided"}</p>
@@ -980,9 +982,9 @@ function renderTemplate3(data) {
     </div>
   `;
 
-  // Render work experience dynamically
-  const experienceItems = data.experience && data.experience.length > 0
-    ? data.experience.map(exp => `
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
       <div class="experience-item">
         <h5>${exp.jobTitle || "Job Title"}</h5>
         <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
@@ -990,10 +992,10 @@ function renderTemplate3(data) {
         <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
         <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No work experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -1162,48 +1164,48 @@ function renderTemplate3(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
 
-function renderTemplate6(data) {
-  const skillsItems = data.skills
-    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
-    : '';
+        function renderTemplate6(data) {
+            const skillsItems = data.skills ?
+                data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('') :
+                '';
 
-  const hobbiesItems = data.hobbies
-    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
-    : '';
+            const hobbiesItems = data.hobbies ?
+                data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('') :
+                '';
 
-  const projectsItems = data.projects && data.projects.length > 0
-    ? data.projects.map(project => `
+            const projectsItems = data.projects && data.projects.length > 0 ?
+                data.projects.map(project => `
       <div class="project">
         <h4>${project.projectName || "Unnamed Project"}</h4>
         <p><a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
         <p>${project.projectDesc || "No description available."}</p>
       </div>
-    `).join('')
-    : '<p>No projects available.</p>';
+    `).join('') :
+                '<p>No projects available.</p>';
 
-  const achievementsItems = data.achievements && data.achievements.length > 0
-    ? data.achievements.map(achievement => `
+            const achievementsItems = data.achievements && data.achievements.length > 0 ?
+                data.achievements.map(achievement => `
       <div class="achievement">
         <h4>${achievement.achievementTitle || "Untitled Achievement"}</h4>
         <p>${achievement.achievementDesc || "No description available."}</p>
       </div>
-    `).join('')
-    : '<p>No achievements available.</p>';
+    `).join('') :
+                '<p>No achievements available.</p>';
 
-    // Render languages dynamically
-  const languagesItems = data.languages && data.languages.length > 0
-    ? data.languages.map(lang => `
+            // Render languages dynamically
+            const languagesItems = data.languages && data.languages.length > 0 ?
+                data.languages.map(lang => `
         <p><strong>${lang.language || "Unknown Language"}</strong> - 
         ${lang.proficiency || "Unknown Proficiency"}</p>
-      `).join('')
-    : '<p>No languages listed.</p>';
+      `).join('') :
+                '<p>No languages listed.</p>';
 
-    // Render education dynamically
-  const educationItems = `
+            // Render education dynamically
+            const educationItems = `
     <div class="education-item">
       <p><strong>Degree:</strong> ${data.education.degree || "Not provided"}</p>
       <p><strong>College:</strong> ${data.education.collegeName || "Not provided"}</p>
@@ -1213,17 +1215,20 @@ function renderTemplate6(data) {
     </div>
   `;
 
-  const experienceItems = data.experiences && data.experiences.length > 0
-    ? data.experiences.map(exp => `
-      <div class="experience">
-        <h4>${exp.jobTitle || "Untitled Role"} at ${exp.companyName || "Unknown Company"}</h4>
-        <p><em>${exp.experienceYear || "Year not specified"}</em></p>
-        <p>${exp.jobDesc || "No description available."}</p>
+            // Render work experience dynamically
+            const experienceItems = data.experience && data.experience.length > 0 ?
+                data.experience.map(exp => `
+      <div class="experience-item">
+        <h5>${exp.jobTitle || "Job Title"}</h5>
+        <p><strong>Company:</strong> ${exp.companyName || "Not provided"}</p>
+        <p><strong>Location:</strong> ${exp.location || "Not provided"}</p>
+        <p><strong>Duration:</strong> ${exp.duration || "Not provided"}</p>
+        <p><strong>Responsibilities:</strong> ${exp.responsibilities || "Not provided"}</p>
       </div>
-    `).join('')
-    : '<p>No experience available.</p>';
+    `).join('') :
+                '<p>No work experience available.</p>';
 
-  return `
+            return `
     <style>
       body {
         margin: 0;
@@ -1365,36 +1370,37 @@ function renderTemplate6(data) {
       </div>
     </div>
   `;
-}
+        }
 
 
 
-    // Render the chosen template based on "selectedTemplate" value.
-    if (data) {
-      const output = document.getElementById("resumeOutput");
-      switch (selectedTemplate) {
-        case "template1":
-          output.innerHTML = renderTemplate1(data);
-          break;
-        case "template2":
-          output.innerHTML = renderTemplate2(data);
-          break;
-        case "template3":
-          output.innerHTML = renderTemplate3(data);
-          break;
-        case "template4":
-          output.innerHTML = renderTemplate4(data);
-          break;
-        case "template5":
-          output.innerHTML = renderTemplate5(data);
-          break;
-        case "template6":
-          output.innerHTML = renderTemplate6(data);
-          break;
-        default:
-          output.innerHTML = renderTemplate1(data);
-      }
-    }
-  </script>
+        // Render the chosen template based on "selectedTemplate" value.
+        if (data) {
+            const output = document.getElementById("resumeOutput");
+            switch (selectedTemplate) {
+                case "template1":
+                    output.innerHTML = renderTemplate1(data);
+                    break;
+                case "template2":
+                    output.innerHTML = renderTemplate2(data);
+                    break;
+                case "template3":
+                    output.innerHTML = renderTemplate3(data);
+                    break;
+                case "template4":
+                    output.innerHTML = renderTemplate4(data);
+                    break;
+                case "template5":
+                    output.innerHTML = renderTemplate5(data);
+                    break;
+                case "template6":
+                    output.innerHTML = renderTemplate6(data);
+                    break;
+                default:
+                    output.innerHTML = renderTemplate1(data);
+            }
+        }
+    </script>
 </body>
+
 </html>
