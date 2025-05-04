@@ -1,314 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Build Your Resume</title>
     <link rel="stylesheet" href="/css/builder.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <nav>
-        <div class="logo">
-            <a href="/main.html"><i class="fas fa-star"></i> Resume Builder</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="/pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li>
-                <a href="/pages/signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Signup</a>
-            </li>
-        </ul>
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+      <div class="logo">
+        <a href="/index.html"><i class="fas fa-star"></i> Resume Builder</a>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="/pages/about.html"
+            ><i class="fas fa-info-circle"></i> About</a
+          >
+        </li>
+        <li>
+          <a href="/pages/contact.html"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </li>
+        <li>
+          <a href="/pages/signup.html" class="signup-btn"
+            ><i class="fas fa-user-plus"></i> Signup</a
+          >
+        </li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
 
     <div class="container1">
-        <h2>Resume Builder</h2>
-        <form id="resumeForm">
-            <!-- About Section -->
-            <div class="section">
-                <h3>About Section</h3>
-                <div class="grid-3">
-                    <input type="text" id="firstName" placeholder="First Name" required pattern="[A-Za-z]+" title="Only letters allowed" />
-                    <input type="text" id="middleName" placeholder="Middle Name (optional)" pattern="[A-Za-z]*" title="Only letters allowed" />
-                    <input type="text" id="lastName" placeholder="Last Name" required pattern="[A-Za-z]+" title="Only letters allowed" />
-                    <input type="text" id="designation" placeholder="Designation" required />
-                    <input type="text" id="address" placeholder="Address" />
-                    <input type="email" id="email" placeholder="Email" required title="Enter a valid email" />
-                    <input type="text" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" title="Enter a 10-digit phone number" />
-                </div>
+      <h2>Resume Builder</h2>
+      <form id="resumeForm">
+        <!-- About Section -->
+        <div class="section">
+          <h3>About Section</h3>
+          <div class="grid-3">
+            <input
+              type="text"
+              id="firstName"
+              placeholder="First Name"
+              required
+              pattern="[A-Za-z]+"
+              title="Only letters allowed"
+            />
+            <input
+              type="text"
+              id="middleName"
+              placeholder="Middle Name (optional)"
+              pattern="[A-Za-z]*"
+              title="Only letters allowed"
+            />
+            <input
+              type="text"
+              id="lastName"
+              placeholder="Last Name"
+              required
+              pattern="[A-Za-z]+"
+              title="Only letters allowed"
+            />
+            <input
+              type="text"
+              id="designation"
+              placeholder="Designation"
+              required
+            />
+            <input type="text" id="address" placeholder="Address" />
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required
+              title="Enter a valid email"
+            />
+            <input
+              type="text"
+              id="phone"
+              placeholder="Phone Number"
+              required
+              pattern="[0-9]{10}"
+              title="Enter a 10-digit phone number"
+            />
+          </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="section">
+          <h3>Summary</h3>
+          <textarea
+            id="summary"
+            placeholder="Write a brief summary about yourself"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section">
+          <h3>Education</h3>
+
+          <h4>School</h4>
+          <div class="grid-3">
+            <input
+              type="text"
+              id="schoolName"
+              placeholder="School Name"
+              required
+            />
+            <input
+              type="text"
+              id="schoolCity"
+              placeholder="City"
+              required
+              pattern="[A-Za-z\s]+"
+              title="Only letters allowed"
+            />
+            <input
+              type="text"
+              id="schoolYear"
+              placeholder="Duration (e.g., 2020 - 2024)"
+              required
+              pattern="^\d{4}\s*-\s*\d{4}$"
+              title="Format: 2020 - 2024"
+            />
+            <input
+              type="text"
+              id="schoolCgpa"
+              placeholder="Marks/CGPA/Percentage"
+              pattern="^\d+(\.\d{1,2})?$"
+              title="Valid format: 8.5 or 75"
+            />
+          </div>
+
+          <h4>College / Diploma</h4>
+          <div class="grid-3">
+            <input
+              type="text"
+              id="collegeName"
+              placeholder="College Name"
+              required
+            />
+            <input
+              type="text"
+              id="collegeCourse"
+              placeholder="Course/Diploma"
+              required
+            />
+            <input
+              type="text"
+              id="collegeCity"
+              placeholder="City"
+              required
+              pattern="[A-Za-z\s]+"
+              title="Only letters allowed"
+            />
+            <input
+              type="text"
+              id="collegeYear"
+              placeholder="Duration (e.g., 2020 - 2024)"
+              required
+              pattern="^\d{4}\s*-\s*\d{4}$"
+            />
+            <input
+              type="text"
+              id="collegeCgpa"
+              placeholder="Marks/CGPA/Percentage"
+              required
+              pattern="^\d+(\.\d{1,2})?$"
+            />
+          </div>
+
+          <h4>Engineering / Degree</h4>
+          <div class="grid-3">
+            <input
+              type="text"
+              id="degreeCollegeName"
+              placeholder="College Name"
+              required
+            />
+            <input
+              type="text"
+              id="degreeCourse"
+              placeholder="Degree"
+              required
+            />
+            <input
+              type="text"
+              id="degreeCity"
+              placeholder="City"
+              required
+              pattern="[A-Za-z\s]+"
+            />
+            <input
+              type="text"
+              id="degreeYear"
+              placeholder="Duration (e.g., 2020 - 2024)"
+              required
+              pattern="^\d{4}\s*-\s*\d{4}$"
+            />
+            <input
+              type="text"
+              id="degreeCgpa"
+              placeholder="Marks/CGPA/Percentage"
+              required
+              pattern="^\d+(\.\d{1,2})?$"
+            />
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+          <h3>Skills</h3>
+          <textarea
+            id="skills"
+            placeholder="Skills (comma separated)"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+          <h3>Projects</h3>
+          <div id="projectSection">
+            <div class="grid-2 projectEntry">
+              <input type="text" placeholder="Project Name" required />
+              <input
+                type="url"
+                placeholder="Project Link (https://...)"
+                pattern="https?://.+"
+                title="Start with http:// or https://"
+              />
+              <input type="text" placeholder="Description" required />
             </div>
+          </div>
+          <button type="button" id="addProject" class="btn2">
+            Add Project
+          </button>
+          <button type="button" id="removeProject" class="btn2">Remove</button>
+        </div>
 
-            <!-- Summary Section -->
-            <div class="section">
-                <h3>Summary</h3>
-                <textarea id="summary" placeholder="Write a brief summary about yourself" required></textarea>
+        <!-- Achievements Section -->
+        <div class="section">
+          <h3>Achievements</h3>
+          <div id="achievementSection">
+            <div class="grid-2 achievementEntry">
+              <input type="text" placeholder="Title" required />
+              <input type="text" placeholder="Description" required />
             </div>
+          </div>
+          <button type="button" id="addAchievement" class="btn2">
+            Add Achievement
+          </button>
+          <button type="button" id="removeAchievement" class="btn2">
+            Remove
+          </button>
+        </div>
 
-            <!-- Education Section -->
-            <div class="section">
-                <h3>Education</h3>
-
-                <h4>School</h4>
-                <div class="grid-3">
-                    <input type="text" id="schoolName" placeholder="School Name" required />
-                    <input type="text" id="schoolCity" placeholder="City" required pattern="[A-Za-z\s]+" title="Only letters allowed" />
-                    <input type="text" id="schoolYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" title="Format: 2020 - 2024" />
-                    <input type="text" id="schoolCgpa" placeholder="Marks/CGPA/Percentage" pattern="^\d+(\.\d{1,2})?$" title="Valid format: 8.5 or 75" />
-                </div>
-
-                <h4>College / Diploma</h4>
-                <div class="grid-3">
-                    <input type="text" id="collegeName" placeholder="College Name" required />
-                    <input type="text" id="collegeCourse" placeholder="Course/Diploma" required />
-                    <input type="text" id="collegeCity" placeholder="City" required pattern="[A-Za-z\s]+" title="Only letters allowed" />
-                    <input type="text" id="collegeYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" />
-                    <input type="text" id="collegeCgpa" placeholder="Marks/CGPA/Percentage" required pattern="^\d+(\.\d{1,2})?$" />
-                </div>
-
-                <h4>Engineering / Degree</h4>
-                <div class="grid-3">
-                    <input type="text" id="degreeCollegeName" placeholder="College Name" required />
-                    <input type="text" id="degreeCourse" placeholder="Degree" required />
-                    <input type="text" id="degreeCity" placeholder="City" required pattern="[A-Za-z\s]+" />
-                    <input type="text" id="degreeYear" placeholder="Duration (e.g., 2020 - 2024)" required pattern="^\d{4}\s*-\s*\d{4}$" />
-                    <input type="text" id="degreeCgpa" placeholder="Marks/CGPA/Percentage" required pattern="^\d+(\.\d{1,2})?$" />
-                </div>
+        <!-- Languages Section -->
+        <div class="section">
+          <h3>Languages</h3>
+          <div id="languageSection">
+            <div class="grid-2 languageEntry">
+              <input
+                type="text"
+                name="language"
+                placeholder="Language (e.g., English)"
+                required
+              />
+              <select name="proficiency" required>
+                <option value="">Select Proficiency</option>
+                <option value="Basic">Basic</option>
+                <option value="Conversational">Conversational</option>
+                <option value="Fluent">Fluent</option>
+                <option value="Native">Native</option>
+              </select>
             </div>
+          </div>
+          <button type="button" id="addLanguage" class="btn2">
+            Add Language
+          </button>
+          <button type="button" id="removeLanguage" class="btn2">Remove</button>
+        </div>
 
-            <!-- Skills Section -->
-            <div class="section">
-                <h3>Skills</h3>
-                <textarea id="skills" placeholder="Skills (comma separated)" required></textarea>
-            </div>
+        <!-- Hobbies Section -->
+        <div class="section">
+          <h3>Hobbies</h3>
+          <textarea
+            id="hobbies"
+            placeholder="Hobbies (comma separated)"
+          ></textarea>
+        </div>
 
-            <!-- Projects Section -->
-            <div class="section">
-                <h3>Projects</h3>
-                <div id="projectSection">
-                    <div class="grid-2 projectEntry">
-                        <input type="text" placeholder="Project Name" required />
-                        <input type="url" placeholder="Project Link (https://...)" pattern="https?://.+" title="Start with http:// or https://" />
-                        <input type="text" placeholder="Description" required />
-                    </div>
-                </div>
-                <button type="button" id="addProject" class="btn2">Add Project</button>
-                <button type="button" id="removeProject" class="btn2">Remove</button>
-            </div>
-
-            <!-- Achievements Section -->
-            <div class="section">
-                <h3>Achievements</h3>
-                <div id="achievementSection">
-                    <div class="grid-2 achievementEntry">
-                        <input type="text" placeholder="Title" required />
-                        <input type="text" placeholder="Description" required />
-                    </div>
-                </div>
-                <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
-                <button type="button" id="removeAchievement" class="btn2">Remove</button>
-            </div>
-
-            <!-- Languages Section -->
-            <div class="section">
-                <h3>Languages</h3>
-                <div id="languageSection">
-                    <div class="grid-2 languageEntry">
-                        <input type="text" name="language" placeholder="Language (e.g., English)" required />
-                        <select name="proficiency" required>
-                            <option value="">Select Proficiency</option>
-                            <option value="Basic">Basic</option>
-                            <option value="Conversational">Conversational</option>
-                            <option value="Fluent">Fluent</option>
-                            <option value="Native">Native</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="button" id="addLanguage" class="btn2">Add Language</button>
-                <button type="button" id="removeLanguage" class="btn2">Remove</button>
-            </div>
-
-            <!-- Hobbies Section -->
-            <div class="section">
-                <h3>Hobbies</h3>
-                <textarea id="hobbies" placeholder="Hobbies (comma separated)"></textarea>
-            </div>
-
-            <button type="submit" class="btn2">Submit</button>
-        </form>
+        <button type="submit" class="btn2">Submit</button>
+      </form>
     </div>
 
     <footer>
-        <div class="footer-container">
-            <p>&copy; 2025 SRKR Engineering College |
-                <a href="https://srkrec.edu.in/#" target="_blank">CSIT Department</a>
-            </p>
-        </div>
+      <div class="footer-container">
+        <p>
+          &copy; 2025 SRKR Engineering College |
+          <a href="https://srkrec.edu.in/#" target="_blank">CSIT Department</a>
+        </p>
+      </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector(".hamburger");
-            const navLinks = document.querySelector(".nav-links");
-            hamburger.addEventListener("click", () => navLinks.classList.toggle("show"));
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        hamburger.addEventListener("click", () =>
+          navLinks.classList.toggle("show")
+        );
 
-            const form = document.getElementById('resumeForm');
+        const form = document.getElementById("resumeForm");
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
 
-                const formData = {
-                    firstName: document.getElementById('firstName').value.trim(),
-                    middleName: document.getElementById('middleName').value.trim(),
-                    lastName: document.getElementById('lastName').value.trim(),
-                    designation: document.getElementById('designation').value.trim(),
-                    address: document.getElementById('address').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
-                    summary: document.getElementById('summary').value.trim(),
-                    schoolName: document.getElementById('schoolName').value.trim(),
-                    schoolCity: document.getElementById('schoolCity').value.trim(),
-                    schoolYear: document.getElementById('schoolYear').value.trim(),
-                    schoolCgpa: document.getElementById('schoolCgpa').value.trim(),
-                    collegeName: document.getElementById('collegeName').value.trim(),
-                    collegeCourse: document.getElementById('collegeCourse').value.trim(),
-                    collegeCity: document.getElementById('collegeCity').value.trim(),
-                    collegeYear: document.getElementById('collegeYear').value.trim(),
-                    collegeCgpa: document.getElementById('collegeCgpa').value.trim(),
-                    degreeCollegeName: document.getElementById('degreeCollegeName').value.trim(),
-                    degreeCourse: document.getElementById('degreeCourse').value.trim(),
-                    degreeCity: document.getElementById('degreeCity').value.trim(),
-                    degreeYear: document.getElementById('degreeYear').value.trim(),
-                    degreeCgpa: document.getElementById('degreeCgpa').value.trim(),
-                    skills: document.getElementById('skills').value.trim(),
-                    projects: [],
-                    achievements: [],
-                    languages: [],
-                    hobbies: document.getElementById('hobbies').value.trim()
-                };
+          const formData = {
+            firstName: document.getElementById("firstName").value.trim(),
+            middleName: document.getElementById("middleName").value.trim(),
+            lastName: document.getElementById("lastName").value.trim(),
+            designation: document.getElementById("designation").value.trim(),
+            address: document.getElementById("address").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            summary: document.getElementById("summary").value.trim(),
+            schoolName: document.getElementById("schoolName").value.trim(),
+            schoolCity: document.getElementById("schoolCity").value.trim(),
+            schoolYear: document.getElementById("schoolYear").value.trim(),
+            schoolCgpa: document.getElementById("schoolCgpa").value.trim(),
+            collegeName: document.getElementById("collegeName").value.trim(),
+            collegeCourse: document
+              .getElementById("collegeCourse")
+              .value.trim(),
+            collegeCity: document.getElementById("collegeCity").value.trim(),
+            collegeYear: document.getElementById("collegeYear").value.trim(),
+            collegeCgpa: document.getElementById("collegeCgpa").value.trim(),
+            degreeCollegeName: document
+              .getElementById("degreeCollegeName")
+              .value.trim(),
+            degreeCourse: document.getElementById("degreeCourse").value.trim(),
+            degreeCity: document.getElementById("degreeCity").value.trim(),
+            degreeYear: document.getElementById("degreeYear").value.trim(),
+            degreeCgpa: document.getElementById("degreeCgpa").value.trim(),
+            skills: document.getElementById("skills").value.trim(),
+            projects: [],
+            achievements: [],
+            languages: [],
+            hobbies: document.getElementById("hobbies").value.trim(),
+          };
 
-                document.querySelectorAll('#projectSection .projectEntry').forEach(function(entry) {
-                    const [name, link, desc] = entry.querySelectorAll('input');
-                    if (name.value || link.value || desc.value) {
-                        formData.projects.push({
-                            projectName: name.value.trim(),
-                            projectLink: link.value.trim(),
-                            projectDesc: desc.value.trim()
-                        });
-                    }
+          document
+            .querySelectorAll("#projectSection .projectEntry")
+            .forEach(function (entry) {
+              const [name, link, desc] = entry.querySelectorAll("input");
+              if (name.value || link.value || desc.value) {
+                formData.projects.push({
+                  projectName: name.value.trim(),
+                  projectLink: link.value.trim(),
+                  projectDesc: desc.value.trim(),
                 });
+              }
+            });
 
-                document.querySelectorAll('#achievementSection .achievementEntry').forEach(function(entry) {
-                    const [title, desc] = entry.querySelectorAll('input');
-                    if (title.value || desc.value) {
-                        formData.achievements.push({
-                            achievementTitle: title.value.trim(),
-                            achievementDesc: desc.value.trim()
-                        });
-                    }
+          document
+            .querySelectorAll("#achievementSection .achievementEntry")
+            .forEach(function (entry) {
+              const [title, desc] = entry.querySelectorAll("input");
+              if (title.value || desc.value) {
+                formData.achievements.push({
+                  achievementTitle: title.value.trim(),
+                  achievementDesc: desc.value.trim(),
                 });
+              }
+            });
 
-                document.querySelectorAll('#languageSection .languageEntry').forEach(function(entry) {
-                    const lang = entry.querySelector('input[name="language"]');
-                    const prof = entry.querySelector('select[name="proficiency"]');
-                    if (lang.value && prof.value) {
-                        formData.languages.push({
-                            language: lang.value.trim(),
-                            proficiency: prof.value
-                        });
-                    }
+          document
+            .querySelectorAll("#languageSection .languageEntry")
+            .forEach(function (entry) {
+              const lang = entry.querySelector('input[name="language"]');
+              const prof = entry.querySelector('select[name="proficiency"]');
+              if (lang.value && prof.value) {
+                formData.languages.push({
+                  language: lang.value.trim(),
+                  proficiency: prof.value,
                 });
-
-                localStorage.setItem('resumeData', JSON.stringify(formData));
-                alert('Resume data saved successfully!');
-                window.location.href = "./pages/students/template2.html";
+              }
             });
 
-            document.getElementById('addProject').addEventListener('click', function() {
-                const section = document.getElementById('projectSection');
-                const last = section.querySelector('.projectEntry:last-child');
-                const inputs = last.querySelectorAll('input');
-                if ([...inputs].every(i => i.value.trim() !== '')) {
-                    const clone = last.cloneNode(true);
-                    clone.querySelectorAll('input').forEach(i => i.value = '');
-                    section.appendChild(clone);
-                } else {
-                    alert('Please fill out the current project before adding a new one.');
-                }
-            });
-
-            document.getElementById('addAchievement').addEventListener('click', function() {
-                const section = document.getElementById('achievementSection');
-                const last = section.querySelector('.achievementEntry:last-child');
-                const inputs = last.querySelectorAll('input');
-                if ([...inputs].every(i => i.value.trim() !== '')) {
-                    const clone = last.cloneNode(true);
-                    clone.querySelectorAll('input').forEach(i => i.value = '');
-                    section.appendChild(clone);
-                } else {
-                    alert('Please fill out the current achievement before adding a new one.');
-                }
-            });
-
-            document.getElementById('addLanguage').addEventListener('click', function() {
-                const section = document.getElementById('languageSection');
-                const last = section.querySelector('.languageEntry:last-child');
-                const inputs = last.querySelectorAll('input, select');
-                if ([...inputs].every(i => i.value.trim() !== '')) {
-                    const clone = last.cloneNode(true);
-                    clone.querySelectorAll('input, select').forEach(i => i.value = '');
-                    section.appendChild(clone);
-                } else {
-                    alert('Please fill out the current language entry before adding a new one.');
-                }
-            });
-            // Remove Project Functionality
-            const removeProjectBtn = document.getElementById('removeProject');
-            removeProjectBtn.addEventListener('click', function() {
-                const projectSection = document.getElementById('projectSection');
-                const allEntries = projectSection.querySelectorAll('.projectEntry');
-
-                if (allEntries.length > 1) {
-                    projectSection.removeChild(allEntries[allEntries.length - 1]);
-                } else {
-                    alert('At least one project entry must remain.');
-                }
-            });
-
-            // Remove Achievement Functionality
-            const removeAchievementBtn = document.getElementById('removeAchievement');
-            removeAchievementBtn.addEventListener('click', function() {
-                const achievementSection = document.getElementById('achievementSection');
-                const allEntries = achievementSection.querySelectorAll('.achievementEntry');
-
-                if (allEntries.length > 1) {
-                    achievementSection.removeChild(allEntries[allEntries.length - 1]);
-                } else {
-                    alert('At least one achievement entry must remain.');
-                }
-            });
-
-            // Remove Language Functionality
-            const removeLanguageBtn = document.getElementById('removeLanguage');
-            removeLanguageBtn.addEventListener('click', function() {
-                const languageSection = document.getElementById('languageSection');
-                const allEntries = languageSection.querySelectorAll('.languageEntry');
-
-                if (allEntries.length > 1) {
-                    languageSection.removeChild(allEntries[allEntries.length - 1]);
-                } else {
-                    alert('At least one language entry must remain.');
-                }
-            });
+          localStorage.setItem("resumeData", JSON.stringify(formData));
+          alert("Resume data saved successfully!");
+          window.location.href = "./pages/students/template2.html";
         });
-    </script>
-</body>
 
+        document
+          .getElementById("addProject")
+          .addEventListener("click", function () {
+            const section = document.getElementById("projectSection");
+            const last = section.querySelector(".projectEntry:last-child");
+            const inputs = last.querySelectorAll("input");
+            if ([...inputs].every((i) => i.value.trim() !== "")) {
+              const clone = last.cloneNode(true);
+              clone.querySelectorAll("input").forEach((i) => (i.value = ""));
+              section.appendChild(clone);
+            } else {
+              alert(
+                "Please fill out the current project before adding a new one."
+              );
+            }
+          });
+
+        document
+          .getElementById("addAchievement")
+          .addEventListener("click", function () {
+            const section = document.getElementById("achievementSection");
+            const last = section.querySelector(".achievementEntry:last-child");
+            const inputs = last.querySelectorAll("input");
+            if ([...inputs].every((i) => i.value.trim() !== "")) {
+              const clone = last.cloneNode(true);
+              clone.querySelectorAll("input").forEach((i) => (i.value = ""));
+              section.appendChild(clone);
+            } else {
+              alert(
+                "Please fill out the current achievement before adding a new one."
+              );
+            }
+          });
+
+        document
+          .getElementById("addLanguage")
+          .addEventListener("click", function () {
+            const section = document.getElementById("languageSection");
+            const last = section.querySelector(".languageEntry:last-child");
+            const inputs = last.querySelectorAll("input, select");
+            if ([...inputs].every((i) => i.value.trim() !== "")) {
+              const clone = last.cloneNode(true);
+              clone
+                .querySelectorAll("input, select")
+                .forEach((i) => (i.value = ""));
+              section.appendChild(clone);
+            } else {
+              alert(
+                "Please fill out the current language entry before adding a new one."
+              );
+            }
+          });
+        // Remove Project Functionality
+        const removeProjectBtn = document.getElementById("removeProject");
+        removeProjectBtn.addEventListener("click", function () {
+          const projectSection = document.getElementById("projectSection");
+          const allEntries = projectSection.querySelectorAll(".projectEntry");
+
+          if (allEntries.length > 1) {
+            projectSection.removeChild(allEntries[allEntries.length - 1]);
+          } else {
+            alert("At least one project entry must remain.");
+          }
+        });
+
+        // Remove Achievement Functionality
+        const removeAchievementBtn =
+          document.getElementById("removeAchievement");
+        removeAchievementBtn.addEventListener("click", function () {
+          const achievementSection =
+            document.getElementById("achievementSection");
+          const allEntries =
+            achievementSection.querySelectorAll(".achievementEntry");
+
+          if (allEntries.length > 1) {
+            achievementSection.removeChild(allEntries[allEntries.length - 1]);
+          } else {
+            alert("At least one achievement entry must remain.");
+          }
+        });
+
+        // Remove Language Functionality
+        const removeLanguageBtn = document.getElementById("removeLanguage");
+        removeLanguageBtn.addEventListener("click", function () {
+          const languageSection = document.getElementById("languageSection");
+          const allEntries = languageSection.querySelectorAll(".languageEntry");
+
+          if (allEntries.length > 1) {
+            languageSection.removeChild(allEntries[allEntries.length - 1]);
+          } else {
+            alert("At least one language entry must remain.");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

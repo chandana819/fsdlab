@@ -1,60 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign In</title>
-  <link rel="stylesheet" href="/css/signin.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/css/signin.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="/index.html"><i class="fas fa-star"></i> Resume Builder</a>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="/pages/about.html"
+            ><i class="fas fa-info-circle"></i> About</a
+          >
+        </li>
+        <li>
+          <a href="/pages/contact.html"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
+        </li>
+        <li>
+          <a href="/pages/signup.html" class="signup-btn"
+            ><i class="fas fa-user-plus"></i> Signup</a
+          >
+        </li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
 
-</head>
-<body>
-  <nav>
-    <div class="logo">
-      <a href="/main.html"><i class="fas fa-star"></i> Resume Builder</a>
-    </div>
-    <ul class="nav-links">
-      <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="/pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-      <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li>
-        <a href="/pages/signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Signup</a>
-      </li>
-    </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-  
-  
-
-  <form id="loginForm">
-    <center><h1 style="margin-top: 100px;">Sign In</h1></center>
-    <table align="center" height="300" width="350" cellpadding="10px">
-        <tr><td>Username</td></tr>
-        <tr><td><input type="text" id="username" placeholder="Username" required></td></tr>
-        <tr><td>Password</td></tr>
-        <tr><td><input type="password" id="password" placeholder="Password" required></td></tr>
+    <form id="loginForm">
+      <center><h1 style="margin-top: 100px">Sign In</h1></center>
+      <table align="center" height="300" width="350" cellpadding="10px">
+        <tr>
+          <td>Username</td>
+        </tr>
         <tr>
           <td>
-            <input type="checkbox" checked="checked"> Remember Me
+            <input type="text" id="username" placeholder="Username" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Password</td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" checked="checked" /> Remember Me
             <a href="#">Forget password</a>
           </td>
         </tr>
         <tr>
           <td align="center">
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" />
           </td>
         </tr>
-        <tr><td>Don't have an account? <a href="/pages/signup.html">Sign Up</a></td></tr>
-    </table>
-  </form>
+        <tr>
+          <td>
+            Don't have an account? <a href="/pages/signup.html">Sign Up</a>
+          </td>
+        </tr>
+      </table>
+    </form>
     <!-- Footer Section -->
     <footer>
       <div class="footer-container">
-        <p>&copy; 2025 SRKR Engineering College | 
+        <p>
+          &copy; 2025 SRKR Engineering College |
           <a href="https://srkrec.edu.in/#" target="_blank">CSIT Department</a>
         </p>
         <ul class="footer-links">
@@ -65,27 +99,28 @@
       </div>
     </footer>
 
-  
-  <script>
-     const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-  
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-      if (username === "" || password === "") {
-        alert("Please fill in both username and password.");
-      } else {
-        // You can add further validation here
-        window.location.href = "/main.html"; // Redirect to main.html
-      }
-    });
-  </script>
-</body>
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          if (username === "" || password === "") {
+            alert("Please fill in both username and password.");
+          } else {
+            // You can add further validation here
+            window.location.href = "/main.html"; // Redirect to main.html
+          }
+        });
+    </script>
+  </body>
 </html>
