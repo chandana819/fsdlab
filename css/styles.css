@@ -240,3 +240,7 @@ footer p a:hover {
     width: 80%;
   }
 }
+
+.hidden {
+  display: none;
+}

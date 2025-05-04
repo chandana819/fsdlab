@@ -33,10 +33,21 @@
     <div class="container">
       <h1>Who Are You?</h1>
       <p>Select an option below to proceed:</p>
-      <div class="btn-group">
-        <a href="/pages/builder.html" class="btn2"><i class="fas fa-graduation-cap"></i> Student</a>
-        <a href="/pages/builderemp.html" class="btn2"><i class="fas fa-briefcase"></i> Employee</a>
+      <div class="btn-group" id="mainButtons">
+        <button class="btn2" id="studentBtn"><i class="fas fa-graduation-cap"></i> Student</button>
+        <button class="btn2" id="employeeBtn"><i class="fas fa-briefcase"></i> Employee</button>
       </div>
+      
+      <div class="btn-group hidden" id="studentOptions">
+        <a href="/pages/builder.html?profile=yes" class="btn2"><i class="fas fa-user"></i> With Profile</a>
+        <a href="/pages/student.html?profile=no" class="btn2"><i class="fas fa-user-slash"></i> Without Profile</a>
+      </div>
+      
+      <div class="btn-group hidden" id="employeeOptions">
+        <a href="/pages/builderemp.html?profile=yes" class="btn2"><i class="fas fa-user"></i> With Profile</a>
+        <a href="/pages/builderemp.html?profile=no" class="btn2"><i class="fas fa-user-slash"></i> Without Profile</a>
+      </div>
+      
     </div>
   </main>
   
@@ -62,7 +73,22 @@
     hamburger.addEventListener("click", () => {
       navLinks.classList.toggle("show");
     });
-  
+    const studentBtn = document.getElementById("studentBtn");
+const employeeBtn = document.getElementById("employeeBtn");
+const studentOptions = document.getElementById("studentOptions");
+const employeeOptions = document.getElementById("employeeOptions");
+const mainButtons = document.getElementById("mainButtons");
+
+studentBtn.addEventListener("click", () => {
+  mainButtons.classList.add("hidden");
+  studentOptions.classList.remove("hidden");
+});
+
+employeeBtn.addEventListener("click", () => {
+  mainButtons.classList.add("hidden");
+  employeeOptions.classList.remove("hidden");
+});
+
   </script>
 </body>
 </html>

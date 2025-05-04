@@ -264,36 +264,36 @@ document.querySelectorAll('#languageSection .languageEntry').forEach(function (e
         }
       });
   
-      // Project, Achievement, and Experience entry add buttons
       ['addProject', 'addAchievement', 'addExperience'].forEach(id => {
-        document.getElementById(id).addEventListener('click', () => {
-          const section = document.getElementById(id.replace('add', '').toLowerCase() + 'Section');
-          const entries = section.querySelectorAll(`.${id.replace('add', '').toLowerCase()}Entry`);
-          const last = entries[entries.length - 1];
-          const inputs = last.querySelectorAll('input, textarea');
-          let valid = true;
-  
-          inputs.forEach(input => {
-            if (input.required && input.value.trim() === '') {
-              valid = false;
-              input.style.borderColor = 'red';
-            } else {
-              input.style.borderColor = '';
-            }
-          });
-  
-          if (!valid) {
-            alert(`Please fill current ${id.replace('add', '').toLowerCase()} before adding new.`);
-            return;
-          }
-  
-          const clone = last.cloneNode(true);
-          clone.querySelectorAll('input, textarea').forEach(input => {
-            input.value = '';
-            input.style.borderColor = '';
-          });
-          section.appendChild(clone);
-        });
+  document.getElementById(id).addEventListener('click', () => {
+    const section = document.getElementById(id.replace('add', '').toLowerCase() + 'Section');
+    const entries = section.querySelectorAll(`.${id.replace('add', '').toLowerCase()}Entry`);
+    const last = entries[entries.length - 1];
+    const inputs = last.querySelectorAll('input, textarea');
+    let valid = true;
+
+    inputs.forEach(input => {
+      if (input.required && input.value.trim() === '') {
+        valid = false;
+        input.style.borderColor = 'red';
+      } else {
+        input.style.borderColor = '';
+      }
+    });
+
+    if (!valid) {
+      alert(`Please fill current ${id.replace('add', '').toLowerCase()} before adding new.`);
+      return;
+    }
+
+    const clone = last.cloneNode(true);
+    clone.querySelectorAll('input, textarea').forEach(input => {
+      input.value = '';
+      input.style.borderColor = '';
+    });
+    section.appendChild(clone);
+  });
+});
         if (!isFilled) {
     alert('Please fill out the current language entry before adding a new one.');
     return;
@@ -309,7 +309,35 @@ document.querySelectorAll('#languageSection .languageEntry').forEach(function (e
 
   languageSection.appendChild(newEntry);
       });
-    });
+      document.getElementById('addLanguage').addEventListener('click', () => {
+  const section = document.getElementById('languageSection');
+  const entries = section.querySelectorAll('.languageEntry');
+  const last = entries[entries.length - 1];
+  const inputs = last.querySelectorAll('input, select');
+  let valid = true;
+
+  inputs.forEach(input => {
+    if (input.required && input.value.trim() === '') {
+      valid = false;
+      input.style.borderColor = 'red';
+    } else {
+      input.style.borderColor = '';
+    }
+  });
+
+  if (!valid) {
+    alert('Please fill out the current language entry before adding a new one.');
+    return;
+  }
+
+  const clone = last.cloneNode(true);
+  clone.querySelectorAll('input, select').forEach(input => {
+    input.value = '';
+    input.style.borderColor = '';
+  });
+  section.appendChild(clone);
+});
+
   </script>
   
 </body>

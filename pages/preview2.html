@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Preview</title>
+  <link rel="stylesheet" href="/css/preview.css" />
+</head>
+<body>
+  
+  <div class="container2">
+    <h2>Resume Preview</h2>
+    <div id="resumeOutput"></div>
+    <button onclick="window.print()">Download PDF</button>
+  </div>
+
+  <script>
+    // Retrieve resume data and selected template from localStorage
+    const data = JSON.parse(localStorage.getItem("resumeData"));
+    const selectedTemplate = localStorage.getItem("selectedTemplate");
+
+    function renderTemplate1(data) {
+  // Convert comma-separated skills into an unordered list of bullet items
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '<li>No skills available</li>';
+
+  // Convert comma-separated hobbies into an unordered list of bullet items
+  const hobbiesItems = data.hobbies
+    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
+    : '<li>No hobbies available</li>';
+
+  // Render projects dynamically
+  const projectsItems = data.projects && data.projects.length > 0
+    ? data.projects.map(project => `
+        <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
+        <a href="${project.projectLink || "#"}" target="_blank">View Project</a></p>
+        <p>${project.projectDesc || "No description available."}</p>
+      `).join('')
+    : '<p>No projects available.</p>';
+
+  // Render achievements dynamically
+  const achievementsItems = data.achievements && data.achievements.length > 0
+    ? data.achievements.map(achievement => `
+        <p><strong>${achievement.achievementTitle || "Untitled Achievement"}</strong>: 
+        ${achievement.achievementDesc || "No description available."}</p>
+      `).join('')
+    : '<p>No achievements available.</p>';
+
+  // Render languages dynamically
+  const languagesItems = data.languages && data.languages.length > 0
+    ? data.languages.map(lang => `
+        <p><strong>${lang.language || "Unknown Language"}</strong> - 
+        ${lang.proficiency || "Unknown Proficiency"}</p>
+      `).join('')
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .resume {
+        max-width: 800px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      /* Removed .header img styles */
+      .header h2 {
+        font-size: 28px;
+        margin: 10px 0;
+      }
+      .header h4 {
+        font-size: 20px;
+        color: black;
+        margin: 5px 0;
+      }
+      .header p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+      .section-title {
+        font-size: 22px;
+        margin: 20px 0 10px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        text-align: center;
+      }
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      .education-grid > div {
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .education-grid h4{
+        color: blue;
+        font-size:20px;
+        font-weight: bold;
+      }
+      .skills ul,
+      .hobbies ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+      }
+      .skills h3,
+      .hobbies h3,
+      .projects h3,
+      .achievements h3,
+      .languages h3{
+        color: blue;
+      }
+      
+      a {
+        color: #1e90ff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #eee;
+        margin: 20px 0;
+      }
+      @media (max-width: 600px) {
+        .education-grid {
+          grid-template-columns: 1fr;
+        }
+        .header h2 {
+          font-size: 24px;
+        }
+        .header h4 {
+          font-size: 18px;
+          color: black;
+        }
+      }
+    </style>
+
+    <div class="resume">
+      <!-- About Section -->
+      <div class="header">
+        <h2>${data.firstName || "No First Name"} ${data.middleName ? data.middleName + ' ' : ''}${data.lastName || "No Last Name"}</h2>
+        <h4>${data.designation || "No Designation"}</h4>
+        <p><strong>Email:</strong> ${data.email || "No Email"}</p>
+        <p><strong>Phone:</strong> ${data.phone || "No Phone"}</p>
+        <p><strong>Address:</strong> ${data.address || "No Address"}</p>
+        <p><strong>About Me:</strong> ${data.summary || "No Summary"}</p>
+      </div>
+      <hr/>
+
+      <!-- Education Section -->
+      <div class="education">
+        <h3 class="section-title">Education</h3>
+        <div class="education-grid">
+          <!-- School -->
+          <div class="education-school">
+            <h4>School</h4>
+            <p><strong>Name:</strong> ${data.schoolName || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.schoolCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.schoolYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.schoolCgpa || "Not provided"}</p>
+          </div>
+          <!-- College / Diploma -->
+          <div class="education-college">
+            <h4>College / Diploma</h4>
+            <p><strong>Name:</strong> ${data.collegeName || "Not provided"}</p>
+            <p><strong>Course:</strong> ${data.collegeCourse || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.collegeCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.collegeYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.collegeCgpa || "Not provided"}</p>
+          </div>
+          <!-- Engineering / Degree -->
+          <div class="education-degree">
+            <h4>Engineering / Degree</h4>
+            <p><strong>Name:</strong> ${data.degreeCollegeName || "Not provided"}</p>
+            <p><strong>Degree:</strong> ${data.degreeCourse || "Not provided"}</p>
+            <p><strong>City:</strong> ${data.degreeCity || "Not provided"}</p>
+            <p><strong>Duration:</strong> ${data.degreeYear || "Not provided"}</p>
+            <p><strong>Marks/CGPA:</strong> ${data.degreeCgpa || "Not provided"}</p>
+          </div>
+        </div>
+      </div>
+      <hr/>
+
+      <!-- Skills Section -->
+      <div class="skills">
+        <h3 class="section-title">Skills</h3>
+        <ul>
+          ${skillsItems}
+        </ul>
+      </div>
+      <hr/>
+
+      <!-- Projects Section -->
+      <div class="projects">
+        <h3 class="section-title">Projects</h3>
+        ${projectsItems}
+      </div>
+      <hr/>
+
+      <!-- Achievements Section -->
+      <div class="achievements">
+        <h3 class="section-title">Achievements</h3>
+        ${achievementsItems}
+      </div>
+      <hr/>
+      
+      <!-- Languages Section -->
+      <div class="languages">
+        <h3 class="section-title">Languages</h3>
+        ${languagesItems}
+      </div>
+      <hr/>
+
+      <!-- Hobbies Section -->
+      <div class="hobbies">
+        <h3 class="section-title">Hobbies</h3>
+        <ul>
+          ${hobbiesItems}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+
+function renderTemplate2(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '<li>No skills available</li>';
+
+  const hobbiesItems = data.hobbies
+    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
+    : '<li>No hobbies available</li>';
+
+  const projectsItems = data.projects?.length
+    ? data.projects.map(project => `
+        <p><strong>${project.projectName || "Unnamed Project"}</strong> - 
+        <a href="${project.projectLink || "#"}" target="_blank">View</a><br>
+        ${project.projectDesc || "No description."}</p>`).join('')
+    : '<p>No projects available.</p>';
+
+  const achievementsItems = data.achievements?.length
+    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
+    : '<p>No achievements available.</p>';
+
+  const languagesItems = data.languages?.length
+    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body { margin:0; font-family:sans-serif; background:#eaeaea; }
+      h1.heading { text-align:center; margin-top:30px; font-size:32px; color:#333; }
+      .resume { display:flex; max-width:1000px; margin:20px auto; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+      .sidebar { width:30%; background:#333; color:#fff; padding:20px; }
+      .main { width:70%; padding:20px; }
+      .sidebar h2 { margin:0 0 10px; }
+      .sidebar h4 { margin:0 0 5px; color:#aaa; }
+      .sidebar p { margin:5px 0; font-size:14px; }
+      .section { margin-bottom:20px; }
+      .sidebar .section h3 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        color: aqua;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+      .main .section h3 {
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        color: balck;
+        font-weight: bold;
+        font-size:20px;
+      }
+      ul { padding-left:20px; margin:0; }
+      a { color:#1e90ff; text-decoration:none; }
+    </style>
+
+    <h1 class="heading">Resume of ${data.firstName || ""} ${data.lastName || ""}</h1>
+    <div class="resume">
+      <div class="sidebar">
+        <h2>${data.firstName || ""} ${data.lastName || ""}</h2>
+        <h4>${data.designation || ""}</h4>
+        <p>Email: ${data.email}</p>
+        <p>Phone: ${data.phone}</p>
+        <p>Address: ${data.address}</p>
+        <p>About: ${data.summary}</p>
+        <div class="section">
+          <h3>Skills</h3>
+          <ul>${skillsItems}</ul>
+        </div>
+        <div class="section">
+          <h3>Hobbies</h3>
+          <ul>${hobbiesItems}</ul>
+        </div>
+        <div class="section">
+          <h3>Languages</h3>
+          ${languagesItems}
+        </div>
+      </div>
+      <div class="main">
+        <div class="section">
+          <h3>Education</h3>
+          <p><strong>School:</strong> ${data.schoolName}, ${data.schoolCity} (${data.schoolYear}) - ${data.schoolCgpa}</p>
+          <p><strong>College:</strong> ${data.collegeName}, ${data.collegeCity} (${data.collegeYear}) - ${data.collegeCgpa}</p>
+          <p><strong>Degree:</strong> ${data.degreeCollegeName}, ${data.degreeCity} (${data.degreeYear}) - ${data.degreeCgpa}</p>
+        </div>
+        <div class="section">
+          <h3>Projects</h3>
+          ${projectsItems}
+        </div>
+        <div class="section">
+          <h3>Achievements</h3>
+          ${achievementsItems}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderTemplate3(data) {
+  const skillsItems = data.skills
+    ? `<p>${data.skills.split(',').join(', ')}</p>`
+    : '<p>No skills available</p>';
+
+  const hobbiesItems = data.hobbies
+    ? `<p>${data.hobbies.split(',').join(', ')}</p>`
+    : '<p>No hobbies available</p>';
+
+  const projectsItems = data.projects?.length
+    ? data.projects.map(p => `<p><strong>${p.projectName}</strong> (${p.projectLink})<br>${p.projectDesc}</p>`).join('')
+    : '<p>No projects available.</p>';
+
+  const achievementsItems = data.achievements?.length
+    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
+    : '<p>No achievements available.</p>';
+
+  const languagesItems = data.languages?.length
+    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body { margin:0; font-family:Georgia, serif; background:#fafafa; color:#333; }
+      .resume { max-width:700px; margin:30px auto; padding:20px; background:#fff; box-shadow:0 0 8px rgba(0,0,0,0.05); }
+      h1 { text-align:center; font-size:32px; margin:0; }
+      h2 { font-size:20px; border-bottom:1px solid #ccc; padding-bottom:5px; }
+      p { margin:5px 0; }
+      a { color:#1e90ff; text-decoration:none; }
+      a:hover { text-decoration:underline; }
+    </style>
+
+    <div class="resume">
+      <h1>${data.firstName || ""} ${data.lastName || ""}</h1>
+      <p><strong>${data.designation || ""}</strong></p>
+      <p><strong>Email:</strong> ${data.email} | Phone: ${data.phone}</p>
+      <p><strong>Address:</strong> ${data.address}</p>
+      <p><strong>About:</strong> ${data.summary}</p>
+      <h2>Education</h2>
+      <p><strong>School:</strong> ${data.schoolName}, ${data.schoolCity} (${data.schoolYear}) - ${data.schoolCgpa}</p>
+      <p><strong>College:</strong> ${data.collegeName}, ${data.collegeCity} (${data.collegeYear}) - ${data.collegeCgpa}</p>
+      <p><strong>Degree:</strong> ${data.degreeCollegeName}, ${data.degreeCity} (${data.degreeYear}) - ${data.degreeCgpa}</p>
+      <h2>Skills</h2>${skillsItems}
+      <h2>Projects</h2>${projectsItems}
+      <h2>Achievements</h2>${achievementsItems}
+      <h2>Languages</h2>${languagesItems}
+      <h2>Hobbies</h2>${hobbiesItems}
+    </div>
+  `;
+}
+
+
+function renderTemplate4(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '<li>No skills available</li>';
+
+  const hobbiesItems = data.hobbies
+    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
+    : '<li>No hobbies available</li>';
+
+  const projectsItems = data.projects?.length
+    ? data.projects.map(p => `<div><h4>${p.projectName}</h4><p>${p.projectDesc}<br><a href="${p.projectLink}">View</a></p></div>`).join('')
+    : '<p>No projects available.</p>';
+
+  const achievementsItems = data.achievements?.length
+    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
+    : '<p>No achievements available.</p>';
+
+  const languagesItems = data.languages?.length
+    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body { margin:0; font-family:Verdana; background:#f0f0f0; }
+      .resume { max-width:900px; margin:40px auto; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+      .header { background:green; color:#fff; padding:20px; text-align:center; }
+      .section { padding:20px; border-bottom:1px solid #eee; }
+      .section h3 { margin-top:0; color:#4CAF50; }
+      ul { padding-left:20px; }
+      a { color:#4CAF50; text-decoration:none; }
+      a:hover { text-decoration:underline; }
+    </style>
+
+    <div class="resume">
+      <div class="header">
+        <h1>${data.firstName || ""} ${data.lastName || ""}</h1>
+        <p>${data.designation || ""}</p>
+        <p>Email: ${data.email} | Phone: ${data.phone}</p>
+        <p>${data.address}</p>
+      </div>
+      <div class="section">
+        <h3>About Me</h3><p>${data.summary}</p>
+      </div>
+      <div class="section">
+        <h3>Education</h3>
+        <p><strong>School:</strong> ${data.schoolName}, ${data.schoolCity} (${data.schoolYear}) - ${data.schoolCgpa}</p>
+        <p><strong>College:</strong> ${data.collegeName}, ${data.collegeCity} (${data.collegeYear}) - ${data.collegeCgpa}</p>
+        <p><strong>Degree:</strong> ${data.degreeCollegeName}, ${data.degreeCity} (${data.degreeYear}) - ${data.degreeCgpa}</p>
+      </div>
+      <div class="section">
+        <h3>Skills</h3><ul>${skillsItems}</ul>
+      </div>
+      <div class="section">
+        <h3>Projects</h3>${projectsItems}
+      </div>
+      <div class="section">
+        <h3>Achievements</h3>${achievementsItems}
+      </div>
+      <div class="section">
+        <h3>Languages</h3>${languagesItems}
+      </div>
+      <div class="section">
+        <h3>Hobbies</h3><ul>${hobbiesItems}</ul>
+      </div>
+    </div>
+  `;
+}
+
+
+
+function renderTemplate5(data) {
+  const skillsItems = data.skills
+    ? `<ul>${data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')}</ul>`
+    : '<p>No skills available</p>';
+
+  const hobbiesItems = data.hobbies
+    ? `<ul>${data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')}</ul>`
+    : '<p>No hobbies available</p>';
+
+  const projectsItems = data.projects?.length
+    ? data.projects.map(p => `<p><strong>${p.projectName}</strong>: ${p.projectDesc} [<a href="${p.projectLink}">View</a>]</p>`).join('')
+    : '<p>No projects available.</p>';
+
+  const achievementsItems = data.achievements?.length
+    ? data.achievements.map(a => `<p><strong>${a.achievementTitle}</strong>: ${a.achievementDesc}</p>`).join('')
+    : '<p>No achievements available.</p>';
+
+  const languagesItems = data.languages?.length
+    ? data.languages.map(l => `<p><strong>${l.language}</strong> - ${l.proficiency}</p>`).join('')
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body { margin:0; font-family:"Segoe UI"; background:#f9f9f9; }
+      .resume { max-width:950px; margin:30px auto; background:#fff; display:grid; grid-template-columns:1fr 2fr; box-shadow:0 0 8px rgba(0,0,0,0.1); }
+      .left { background:teal; color:#fff; padding:20px; }
+      .left h2 { margin:0 0 10px; color:lime; }
+      .left p, .left ul { font-size:14px; }
+      .left h3 { color: white;}
+      .right { padding:20px; }
+      .section { margin-bottom:20px; border-bottom:1px solid #ccc; padding-bottom:10px; }
+      .section h3 { color:#2c3e50; margin:0 0 10px; }
+      a { color:#1abc9c; text-decoration:none; }
+      a:hover { text-decoration:underline; }
+    </style>
+
+    <div class="resume">
+      <div class="left">
+        <h2>${data.firstName} ${data.lastName}</h2>
+        <p>${data.designation}</p>
+        <p>Email: ${data.email}</p>
+        <p>Phone: ${data.phone}</p>
+        <p>Address: ${data.address}</p>
+        <div><h3>Skills</h3>${skillsItems}</div>
+        <div><h3>Languages</h3>${languagesItems}</div>
+        <div><h3>Hobbies</h3>${hobbiesItems}</div>
+      </div>
+      <div class="right">
+        <div class="section"><h3>About Me</h3><p>${data.summary}</p></div>
+        <div class="section"><h3>Education</h3>
+          <p><strong>School:</strong> ${data.schoolName}, ${data.schoolCity} (${data.schoolYear}) - ${data.schoolCgpa}</p>
+          <p><strong>College:</strong> ${data.collegeName}, ${data.collegeCity} (${data.collegeYear}) - ${data.collegeCgpa}</p>
+          <p><strong>Degree:</strong> ${data.degreeCollegeName}, ${data.degreeCity} (${data.degreeYear}) - ${data.degreeCgpa}</p>
+        </div>
+        <div class="section"><h3>Projects</h3>${projectsItems}</div>
+        <div class="section"><h3>Achievements</h3>${achievementsItems}</div>
+      </div>
+    </div>
+  `;
+}
+
+
+function renderTemplate6(data) {
+  const skillsItems = data.skills
+    ? data.skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('')
+    : '<p>No skills available</p>';
+
+  const hobbiesItems = data.hobbies
+    ? data.hobbies.split(',').map(hobby => `<li>${hobby.trim()}</li>`).join('')
+    : '<p>No hobbies available</p>';
+
+  const projectsItems = data.projects?.length
+    ? data.projects.map(p => `
+      <div class="timeline-item">
+        <h4>${p.projectName}</h4>
+        <p>${p.projectDesc}</p>
+        <a href="${p.projectLink}" target="_blank">View Project</a>
+      </div>`).join('')
+    : '<p>No projects available.</p>';
+
+  const achievementsItems = data.achievements?.length
+    ? data.achievements.map(a => `<div class="timeline-item"><h4>${a.achievementTitle}</h4><p>${a.achievementDesc}</p></div>`).join('')
+    : '<p>No achievements available.</p>';
+
+  const languagesItems = data.languages?.length
+    ? `<ul>${data.languages.map(l => `<li>${l.language} (${l.proficiency})</li>`).join('')}</ul>`
+    : '<p>No languages listed.</p>';
+
+  return `
+    <style>
+      body { margin:0; font-family:'Helvetica Neue', sans-serif; background:#f5f5f5; color:#333; }
+      .resume { max-width:900px; margin:30px auto; background:#fff; padding:20px; box-shadow:0 0 8px rgba(0,0,0,0.1); border-radius:8px; }
+      .header { text-align:center; border-bottom:2px solid #007acc; padding-bottom:15px; }
+      .header h1 { margin:0; font-size:32px; color:#007acc; }
+      .header p { margin:5px 0; }
+      .section { margin:30px 0; }
+      .section h2 { border-left:4px solid #007acc; padding-left:10px; color:#007acc; }
+      .timeline-item { border-left:3px solid #ccc; margin-left:15px; padding-left:15px; position:relative; margin-bottom:20px; }
+      .timeline-item::before { content:""; width:12px; height:12px; background:#007acc; border-radius:50%; position:absolute; left:-8px; top:5px; }
+      a { color:#007acc; text-decoration:none; }
+      a:hover { text-decoration:underline; }
+      ul { list-style:disc; padding-left:20px; margin:0; }
+    </style>
+
+    <div class="resume">
+      <div class="header">
+        <h1>${data.firstName || ""} ${data.lastName || ""}</h1>
+        <p><strong>${data.designation || ""}</strong></p>
+        <p>Email: ${data.email} | Phone: ${data.phone}</p>
+        <p>Address: ${data.address}</p>
+        <p>About: ${data.summary}</p>
+      </div>
+
+      <div class="section">
+        <h2>Education</h2>
+        <div class="timeline-item">
+          <h4>School: ${data.schoolName}, ${data.schoolCity}</h4>
+          <p>Year: ${data.schoolYear}, CGPA: ${data.schoolCgpa}</p>
+        </div>
+        <div class="timeline-item">
+          <h4>College: ${data.collegeName}, ${data.collegeCity}</h4>
+          <p>Year: ${data.collegeYear}, CGPA: ${data.collegeCgpa}</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Degree: ${data.degreeCollegeName}, ${data.degreeCity}</h4>
+          <p>Year: ${data.degreeYear}, CGPA: ${data.degreeCgpa}</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Skills</h2>
+        <ul>${skillsItems}</ul>
+      </div>
+
+      <div class="section">
+        <h2>Projects</h2>
+        ${projectsItems}
+      </div>
+
+      <div class="section">
+        <h2>Achievements</h2>
+        ${achievementsItems}
+      </div>
+
+      <div class="section">
+        <h2>Languages</h2>
+        ${languagesItems}
+      </div>
+
+      <div class="section">
+        <h2>Hobbies</h2>
+        <ul>${hobbiesItems}</ul>
+      </div>
+    </div>
+  `;
+}
+
+
+    // Render the chosen template based on "selectedTemplate" value.
+    if (data) {
+      const output = document.getElementById("resumeOutput");
+      switch (selectedTemplate) {
+        case "template1":
+          output.innerHTML = renderTemplate1(data);
+          break;
+        case "template2":
+          output.innerHTML = renderTemplate2(data);
+          break;
+        case "template3":
+          output.innerHTML = renderTemplate3(data);
+          break;
+        case "template4":
+          output.innerHTML = renderTemplate4(data);
+          break;
+        case "template5":
+          output.innerHTML = renderTemplate5(data);
+          break;
+        case "template6":
+          output.innerHTML = renderTemplate6(data);
+          break;
+        default:
+          output.innerHTML = renderTemplate1(data);
+      }
+    }
+  </script>
+</body>
+</html>
