@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Preparation Form</title>
+    <link rel="stylesheet" href="/css/builderemp.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <a href="/main.html"><i class="fas fa-star"></i> Resume Builder</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/main.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="/pages/signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Signup</a></li>
+        </ul>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Resume Form -->
+    <div class="container1">
+        <h2>Employee Resume Preparation Form</h2>
+        <form id="resumeForm">
+
+            <!-- Personal Info -->
+            <div class="section">
+                <h3>Personal Information</h3>
+                <div class="grid-3">
+                    <input type="text" id="firstName" placeholder="First Name" required pattern="[A-Za-z]+" />
+                    <input type="text" id="middleName" placeholder="Middle Name (optional)" pattern="[A-Za-z]+" />
+                    <input type="text" id="lastName" placeholder="Last Name" required pattern="[A-Za-z]+" />
+                    <!-- Removed profile image input -->
+                    <input type="text" id="designation" placeholder="Current Designation" required />
+                    <input type="text" id="address" placeholder="Address" required />
+                    <input type="email" id="email" placeholder="Email" required />
+                    <input type="tel" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" />
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="section">
+                <h3>Professional Summary</h3>
+                <textarea id="summary" placeholder="Brief Summary About Yourself" required minlength="10" maxlength="500"></textarea>
+            </div>
+
+            <!-- Experience -->
+            <div class="section">
+                <h3>Experience</h3>
+                <div id="experienceSection">
+                    <div class="grid-2 experienceEntry">
+                        <input type="text" placeholder="Job Title" required />
+                        <input type="text" placeholder="Company Name" required />
+                        <input type="text" placeholder="Location" required />
+                        <input type="text" placeholder="Duration (e.g., Jan 2020 - Dec 2024)" required pattern="^[a-zA-Z]+\s[0-9]{4}\s-\s[a-zA-Z]+\s[0-9]{4}$" />
+                        <textarea placeholder="Key Responsibilities/Achievements" required minlength="10" maxlength="500"></textarea>
+                    </div>
+                </div>
+                <button type="button" id="addExperience" class="btn2">Add Experience</button>
+                <button type="button" id="removeExperience" class="btn2">Remove</button>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <h3>Skills</h3>
+                <textarea id="skills" placeholder="Skills (comma separated)" required minlength="3"></textarea>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <h3>Education</h3>
+                <div class="grid-3">
+                    <input type="text" id="degree" placeholder="Degree" required />
+                    <input type="text" id="collegeName" placeholder="College Name" required />
+                    <input type="text" id="collegeCity" placeholder="City" required />
+                    <input type="number" id="year" placeholder="Year of Graduation" required min="1980" max="2099" />
+                    <input type="text" id="marks" placeholder="Marks/CGPA" required pattern="^(\d+(\.\d{1,2})?|10\.0)$" />
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <h3>Projects</h3>
+                <div id="projectSection">
+                    <div class="grid-2 projectEntry">
+                        <input type="text" placeholder="Project Name" />
+                        <input type="url" placeholder="Project Link (optional)" />
+                        <textarea placeholder="Description" required minlength="10" maxlength="500"></textarea>
+                    </div>
+                </div>
+                <button type="button" id="addProject" class="btn2">Add Project</button>
+                <button type="button" id="removeProject" class="btn2">Remove</button>
+            </div>
+
+            <!-- Achievements -->
+            <div class="section">
+                <h3>Achievements</h3>
+                <div id="achievementSection">
+                    <div class="grid-2 achievementEntry">
+                        <input type="text" placeholder="Title" required />
+                        <textarea placeholder="Description" required minlength="10" maxlength="500"></textarea>
+                    </div>
+                </div>
+                <button type="button" id="addAchievement" class="btn2">Add Achievement</button>
+                <button type="button" id="removeAchievement" class="btn2">Remove</button>
+            </div>
+
+            <div class="section">
+                <h3>Languages</h3>
+                <div id="languageSection">
+                    <div class="grid-2 languageEntry">
+                        <input type="text" id="language" placeholder="Language (e.g., English)" required />
+                        <select name="proficiency" required>
+                            <option value="">Select Proficiency</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Conversational">Conversational</option>
+                            <option value="Fluent">Fluent</option>
+                            <option value="Native">Native</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="addLanguage" class="btn2">Add Language</button>
+                <button type="button" id="removeLanguage" class="btn2">Remove</button>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="section">
+                <h3>Hobbies</h3>
+                <textarea id="hobbies" placeholder="Hobbies (comma separated)" required minlength="3"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn2">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 SRKR Engineering College |
+                <a href="https://srkrec.edu.in/#" target="_blank">
+                    CSIT Department
+                </a>
+            </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('resumeForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                let formData = {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    middleName: document.getElementById('middleName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    designation: document.getElementById('designation').value.trim(),
+                    address: document.getElementById('address').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    summary: document.getElementById('summary').value.trim(),
+                    skills: document.getElementById('skills').value.trim(),
+                    hobbies: document.getElementById('hobbies').value.trim(),
+                    education: {
+                        degree: document.getElementById('degree').value.trim(),
+                        collegeName: document.getElementById('collegeName').value.trim(),
+                        collegeCity: document.getElementById('collegeCity').value.trim(),
+                        year: document.getElementById('year').value.trim(),
+                        marks: document.getElementById('marks').value.trim(),
+                    },
+                    projects: [],
+                    achievements: [],
+                    languages: [],
+                    experience: []
+                };
+
+                document.querySelectorAll('#projectSection .projectEntry').forEach(entry => {
+                    const inputs = entry.querySelectorAll('input');
+                    const textarea = entry.querySelector('textarea');
+                    const projectName = inputs[0].value.trim();
+                    const projectLink = inputs[1].value.trim();
+                    const projectDesc = textarea.value.trim();
+                    if (projectName || projectLink || projectDesc) {
+                        formData.projects.push({
+                            projectName,
+                            projectLink,
+                            projectDesc
+                        });
+                    }
+                });
+
+                document.querySelectorAll('#achievementSection .achievementEntry').forEach(entry => {
+                    const title = entry.querySelector('input').value.trim();
+                    const desc = entry.querySelector('textarea').value.trim();
+                    if (title || desc) {
+                        formData.achievements.push({
+                            achievementTitle: title,
+                            achievementDesc: desc
+                        });
+                    }
+                });
+
+                document.querySelectorAll('#experienceSection .experienceEntry').forEach(entry => {
+                    const inputs = entry.querySelectorAll('input');
+                    const textarea = entry.querySelector('textarea');
+                    const jobTitle = inputs[0].value.trim();
+                    const companyName = inputs[1].value.trim();
+                    const location = inputs[2].value.trim();
+                    const duration = inputs[3].value.trim();
+                    const responsibilities = textarea.value.trim();
+                    if (jobTitle || companyName || location || duration || responsibilities) {
+                        formData.experience.push({
+                            jobTitle,
+                            companyName,
+                            location,
+                            duration,
+                            responsibilities
+                        });
+                    }
+                });
+
+                document.querySelectorAll('#languageSection .languageEntry').forEach(entry => {
+                    const language = entry.querySelector('input').value.trim();
+                    const proficiency = entry.querySelector('select').value.trim();
+                    if (language && proficiency) {
+                        formData.languages.push({
+                            language,
+                            proficiency
+                        });
+                    }
+                });
+
+                saveData(formData);
+
+                function saveData(data) {
+                    try {
+                        localStorage.setItem('resumeData', JSON.stringify(data));
+                        alert('Resume data saved!');
+                        window.location.href = "/pages/employee/template3.html";
+                    } catch (error) {
+                        alert('Error saving data: ' + error);
+                    }
+                }
+            });
+
+            // Add Buttons
+            ['addProject', 'addAchievement', 'addExperience'].forEach(id => {
+                document.getElementById(id).addEventListener('click', () => {
+                    const section = document.getElementById(id.replace('add', '').toLowerCase() + 'Section');
+                    const entries = section.querySelectorAll(`.${id.replace('add', '').toLowerCase()}Entry`);
+                    const last = entries[entries.length - 1];
+                    const inputs = last.querySelectorAll('input, textarea');
+                    let valid = true;
+
+                    inputs.forEach(input => {
+                        if (input.required && input.value.trim() === '') {
+                            valid = false;
+                            input.style.borderColor = 'red';
+                        } else {
+                            input.style.borderColor = '';
+                        }
+                    });
+
+                    if (!valid) {
+                        alert(`Please fill out the current ${id.replace('add', '').toLowerCase()} before adding a new one.`);
+                        return;
+                    }
+
+                    const clone = last.cloneNode(true);
+                    clone.querySelectorAll('input, textarea').forEach(input => {
+                        input.value = '';
+                        input.style.borderColor = '';
+                    });
+                    section.appendChild(clone);
+                });
+            });
+
+            // Add Language
+            document.getElementById('addLanguage').addEventListener('click', () => {
+                const section = document.getElementById('languageSection');
+                const entries = section.querySelectorAll('.languageEntry');
+                const last = entries[entries.length - 1];
+                const inputs = last.querySelectorAll('input, select');
+                let valid = true;
+
+                inputs.forEach(input => {
+                    if (input.required && input.value.trim() === '') {
+                        valid = false;
+                        input.style.borderColor = 'red';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+
+                if (!valid) {
+                    alert('Please fill out the current language entry before adding a new one.');
+                    return;
+                }
+
+                const clone = last.cloneNode(true);
+                clone.querySelectorAll('input, select').forEach(input => {
+                    input.value = '';
+                    input.style.borderColor = '';
+                });
+                section.appendChild(clone);
+            });
+
+            // Remove Buttons
+            const removeMapping = {
+                removeProject: {
+                    sectionId: 'projectSection',
+                    entryClass: 'projectEntry'
+                },
+                removeAchievement: {
+                    sectionId: 'achievementSection',
+                    entryClass: 'achievementEntry'
+                },
+                removeExperience: {
+                    sectionId: 'experienceSection',
+                    entryClass: 'experienceEntry'
+                },
+                removeLanguage: {
+                    sectionId: 'languageSection',
+                    entryClass: 'languageEntry'
+                }
+            };
+
+            Object.keys(removeMapping).forEach(id => {
+                document.getElementById(id).addEventListener('click', () => {
+                    const section = document.getElementById(removeMapping[id].sectionId);
+                    const entries = section.querySelectorAll(`.${removeMapping[id].entryClass}`);
+                    if (entries.length > 1) {
+                        section.removeChild(entries[entries.length - 1]);
+                    } else {
+                        alert(`At least one ${removeMapping[id].entryClass.replace('Entry', '').toLowerCase()} must remain.`);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
